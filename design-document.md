@@ -5,12 +5,11 @@
 ## 1. Problem Statement
 
 FitNSS is a workout tracker log that will allow the user to keep track of the workouts complete on a weekly basis. 
-With FitNSS you have to option to create your own weekly workout plans or get prescribed a weekly workout plan based on your experience level (Beginner, Intermediate, Advance).
-If one were to create their own plan they would be given the option to select how many days they would work out and then add exercises from the database into the days. 
-Once added they will then be able to type in the number of sets, reps, and weight loaded used for each exercise.
+With FitNSS you have to option to create your own weekly workout plans or get prescribed a weekly workout plan based on your experience level (Beginner, Intermediate, Advance). 
+If one were to create their own plan they would be given the option to select how many days they would workout and then add exercises from the database into the days.
+Once added they will then be able to they'll be able to keep a daily log of how many sets/reps/weights they've completed each time.
 
-This design document describes the main use cases and functionality of FitNSS, a new, native AWS service that will provide users a cleaner, more informative means to view workout information.
-It is designed to interact with the FitNSS Client( which allows users to view workout information based on the day ).
+
 
 
 ## 2. Top Questions to Resolve in Review
