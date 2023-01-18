@@ -112,14 +112,14 @@ Integer numberOfWeights;
 
 ## 6.4. GetExerciseByMuscle Endpoint
 
-* Accepts `GET` requests to `/exerciseMuscle/:workingMuscle`
+* Accepts `GET` requests to `/exercise/exerciseMuscle/:workingMuscle`
 * Returns all the exercises in the requested muscle group in the ExerciseModel format.
     * If there is no exercise found, will throw a
       `InvalidExerciseException`
 
 ## 6.5. GetExerciseByMovement Endpoint
 
-* Accepts `GET` requests to `/exerciseMovement/:exerciseMovementGroup`
+* Accepts `GET` requests to `/exercise/exerciseMovement/:exerciseMovementGroup`
 * Returns all the exercises in the requested movement group in the ExerciseModel format.
     * If there is no exercise found, will throw a
       `InvalidExerciseException`
@@ -148,18 +148,18 @@ Integer numberOfWeights;
 numberOfSets, numberOfReps, NumbersOfWeights.
   ("workDayName": "Mon", "exerciseAdded": "Barbell Bench Press", "numberOfSets": 3, "numberOfReps" 10, "numberOfWeights": 135)
 
-## 6.8 _GetWorkoutPlan EndPoint_
+## 6.8 _GetWorkoutPlans EndPoint_
 * Accepts `GET` requests to `/workoutPlan/`
 * Returns all the workout plans in the workoutPlanTable format.
     * If there is no data found, will throw a
       `NoDataFoundException`
 
 ## 6.9 _DeleteExercise EndPoint_
-* Accepts `DELETE` requests to `/exercise/`
+* Accepts `DELETE` requests to `/exercise/:exerciseId`
 * Accepts data to delete the exercise by using the exerciseId 
 
 ## 6.10 _DeleteWorkoutPlan EndPoint_
-* Accepts `DELETE` requests to `/workoutPlan/`
+* Accepts `DELETE` requests to `/workoutPlan/:workoutPlanId`
 * Accepts data to delete the plan by using the workoutPlanId. 
 
 # 7. Tables
@@ -175,10 +175,12 @@ _Define the DynamoDB tables you will need for the data your service will use. It
 * WorkoutPlanTable
     * workoutPlanId // partition key, string
     * workoutDayName // string
-    * exerciseAdded // string
-    * numberOfSets // integer
-    * numberOfReps // integer
-    * numberOfWeights // integer 
+    * exerciseAdded // List of string
+    * numberOfSets // List of integer
+    * numberOfReps // List of string (ex. push ups, situps, running -> 10,10, 3 miles)
+    * numberOfWeights // List of String (ex. push ups, sit ups, bench press -> BodyWeight, BodyWeight, 135 lbs)
+    * isCompleted // Boolean
+    * notesBox // String
 
 
 # 8. Pages
