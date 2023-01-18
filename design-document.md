@@ -14,11 +14,10 @@ Once added they will then be able to they'll be able to keep a daily log of how 
 
 ## 2. Top Questions to Resolve in Review
 
-_List the most important questions you have about your design, or things that you are still debating internally that you might like help working through._
 
-1. FitNSS contains list of exercises pulled form database.
-2. Allows the user to make a "workout list" by adding the exercises from the database.
-3. Be able to update numbers of sets, reps, and weight to each exercise in the list.
+1. Figuring out how if we would have to make more than 1 dynamodb table or multiple gsi.
+2. Figuring how to make a search function. (Sorting by typing the name)
+3. Will I be able to add more than one "exerciseAdded" into the plan, or will adding an exercise overwrite the previous one?
 4. Is a separate exercise table with all the exercises in the list for the day required?
 
 
@@ -28,41 +27,35 @@ _This is where we work backwards from the customer and define what our customers
 
 U1. As a user, I want to be able to view all exercises in the database.
 
-U2. As a user, I want to be able to add the exercises from the database to the Day corresponding to the workout.
+U2. As a user, I want to be able to add multiple empty HashMap/Sets/List (Not sure which one to use) that we can add the exercises into.
 
 U3. As a user, I want to be able to create a new exercise and add that to the database if it did not exist already.
 
-U4. As a user, I want to be able to update the Days List, so that I can change the information if needed.
+U4. As a user, I want to be able to update the number of Sets,Reps, and weight. So that I can change the information if needed.
 
 U5. As a user, I want to be sort the exercises in the list, so that it'll be easier to search through.
 
-U6. As a user, I want to be able to get a pre-generated workout plan based on my experience.
+U6. As a user, I want to be able to get a pre-generated workout plan based on the experience level selected (Beginner, Intermediate, Advanced). 
 
 U7. As a user, I want to be able to create my own workout plan.
 
+U8. As a user, I want to be able to delete an exercise from the database.
 
-## 4. Project Scope
-
-_Clarify which parts of the problem you intend to solve. It helps reviewers know what questions to ask to make sure you are solving for what you say and stops discussions from getting sidetracked by aspects you do not intend to handle in your design._
+U9. As a user, I want to be able to view the log of the workout plan that was created with the number of exercises, sets, reps, and weights added in.
 
 
 ### 4.1. In Scope
 
-_Which parts of the problem defined in Sections 1 and 2 will you solve with this design? This should include the base functionality of your product. What pieces are required for your product to work?_
-
 * Adding, updating, and retrieving/viewing exercise information
 * Creating own workout plan using the exercises.
 * Retrieving pre-generated workout plan.
-* Adding, updating, and viewing workout plan. 
+* Adding, updating, deleting, and viewing workout plan. 
 
 
 ### 4.2. Out of Scope
 
-_Based on your problem description in Sections 1 and 2, are there any aspects you are not planning to solve? Do potential expansions or related problems occur to you that you want to explicitly say you are not worrying about now? Feel free to put anything here that you think your team can't accomplish in the unit, but would love to do with more time._
+* Trying to have the majority of it on one page.
 
-* Interactive UI.
-* Trying to have majority of it on one page.
-* Keeping logs of more than a week of workouts.
 
 # 5. Proposed Architecture Overview
 
@@ -87,9 +80,9 @@ _Define the data models your service will expose in its responses via your *`-Mo
 // ExerciseModel
 
 String exerciseId;
-String exerciseName;
-String workingMuscle;
-String exerciseMovementGroup;
+String exerciseName; GSI HASHKEY
+String workingMuscle; GSI SORTKEY1
+String exerciseMovementGroup; GSI SORTKEY2
 ```
 ```
 // WorkoutPlanModel
@@ -103,7 +96,7 @@ Integer numberOfWeights;
 
 ```
 
-## 6.2. _GetEmployee Endpoint_
+## 6.2. _GetExercise Endpoint_
 
 * Accepts `GET` requests to `/exercise/:exerciseId`
 * Accepts an exerciseId and returns the corresponding exerciseModel.
@@ -119,14 +112,14 @@ Integer numberOfWeights;
 
 ## 6.4. GetExerciseByMuscle Endpoint
 
-* Accepts `GET` requests to `/exercise/:workingMuscle`
+* Accepts `GET` requests to `/exerciseMuscle/:workingMuscle`
 * Returns all the exercises in the requested muscle group in the ExerciseModel format.
     * If there is no exercise found, will throw a
       `InvalidExerciseException`
 
 ## 6.5. GetExerciseByMovement Endpoint
 
-* Accepts `GET` requests to `/exercise/:exerciseMovementGroup`
+* Accepts `GET` requests to `/exerciseMovement/:exerciseMovementGroup`
 * Returns all the exercises in the requested movement group in the ExerciseModel format.
     * If there is no exercise found, will throw a
       `InvalidExerciseException`
@@ -135,7 +128,8 @@ Integer numberOfWeights;
 
 * Accepts `PUT` requests to `/workoutPlan/:workoutPlanId`
 * Accepts data to update a workout plan including an updated
-  workoutDayName, numberOfSets, numberOfReps, numberOfWeights. Returns the updated information.
+  workoutDayName, numberOfSets, numberOfReps, numberOfWeights. Returns the updated information.*
+  ("workDayName": "Mon", "numberOfSets": 3, "numberOfReps" 10, "numberOfWeights": 135)
 * If the workoutPlanId or name is not found, will throw a   
   `WorkoutPlanNotFoundException`
 
@@ -145,20 +139,28 @@ Integer numberOfWeights;
 * Accepts `POST` requests to `/exercise/`
 * Accepts data to create a new exercise which includes their
    exerciseName, workingMuscle, exerciseMovementGroup and Returns the new exercise.
+  ("exerciseName": "Barbell Bench Press", "workingMuscle": "Chest", "exerciseMovementGroup": "Push")
 
 ## 6.7 _AddWorkoutPlan Endpoint_
 
 * Accepts `POST` requests to `/workoutPlan/`
 * Accepts data to create a workout plan which includes workoutDayName, exerciseAdded, 
-numberOfSets, numberOfReps, NumbersOfWeights. 
+numberOfSets, numberOfReps, NumbersOfWeights.
+  ("workDayName": "Mon", "exerciseAdded": "Barbell Bench Press", "numberOfSets": 3, "numberOfReps" 10, "numberOfWeights": 135)
 
-
-
-## 6.8 GetWorkoutPlan
-* Accepts `GET` requests to `/workoutPlan`
+## 6.8 _GetWorkoutPlan EndPoint_
+* Accepts `GET` requests to `/workoutPlan/`
 * Returns all the workout plans in the workoutPlanTable format.
     * If there is no data found, will throw a
       `NoDataFoundException`
+
+## 6.9 _DeleteExercise EndPoint_
+* Accepts `DELETE` requests to `/exercise/`
+* Accepts data to delete the exercise by using the exerciseId 
+
+## 6.10 _DeleteWorkoutPlan EndPoint_
+* Accepts `DELETE` requests to `/workoutPlan/`
+* Accepts data to delete the plan by using the workoutPlanId. 
 
 # 7. Tables
 
@@ -166,9 +168,9 @@ _Define the DynamoDB tables you will need for the data your service will use. It
 
 * ExerciseTable
     - exerciseId // partition key, string
-    - exerciseName // string
-    - workingMuscle // string
-    - exerciseMovementGroup // string
+    - exerciseName // string // GSI HASHKEY
+    - workingMuscle // string // GSI SORTKEY
+    - exerciseMovementGroup // string // GSI SORTKEY
 
 * WorkoutPlanTable
     * workoutPlanId // partition key, string
