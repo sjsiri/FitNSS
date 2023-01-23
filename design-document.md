@@ -19,6 +19,7 @@ Once added they will then be able to they'll be able to keep a daily log of how 
 2. Figuring how to make a search function. (Sorting by typing the name)
 3. Will I be able to add more than one "exerciseAdded" into the plan, or will adding an exercise overwrite the previous one?
 4. Is a separate exercise table with all the exercises in the list for the day required?
+5. I want to be able to add multiple empty HashMap/Sets/List (Not sure which one to use) that we can add the exercises into. 
 
 
 ## 3. Use Cases
@@ -27,7 +28,7 @@ _This is where we work backwards from the customer and define what our customers
 
 U1. As a user, I want to be able to view all exercises in the database.
 
-U2. As a user, I want to be able to add multiple empty HashMap/Sets/List (Not sure which one to use) that we can add the exercises into.
+U2. As a user, I want to be able to add multiple lists that we can add the exercises into.
 
 U3. As a user, I want to be able to create a new exercise and add that to the database if it did not exist already.
 
