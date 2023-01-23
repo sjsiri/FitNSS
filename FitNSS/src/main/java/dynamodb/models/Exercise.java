@@ -1,4 +1,4 @@
-package main.dynamodb.models;
+package dynamodb.models;
 
 import java.util.Objects;
 
@@ -8,7 +8,6 @@ public class Exercise {
     private String exerciseName;
     private String workingMuscle;
     private String exerciseMovementGroup;
-
 
     public String getExerciseId() {
         return exerciseId;

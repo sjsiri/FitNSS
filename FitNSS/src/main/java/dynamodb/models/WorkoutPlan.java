@@ -1,8 +1,7 @@
-package main.dynamodb.models;
+package dynamodb.models;
 
 import java.util.List;
 import java.util.Objects;
-
 public class WorkoutPlan {
 
     private String workoutPlanId;

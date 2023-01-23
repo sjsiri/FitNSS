@@ -8,3 +8,6 @@
  */
 
 rootProject.name = 'FitNSS'
+include 'FitNSSproject'
+include 'FitNSS'
+

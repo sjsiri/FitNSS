@@ -1,4 +1,4 @@
-package main.dependency;
+package dependency;
 
 public class DaoModule {
 
