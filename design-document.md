@@ -176,7 +176,7 @@ _Define the DynamoDB tables you will need for the data your service will use. It
     * workoutPlanId // partition key, string
     * workoutDayName // string
     * exerciseAdded // List of string
-    * numberOfSets // List of integer
+    * numberOfSets // List of integers
     * numberOfReps // List of string (ex. push ups, situps, running -> 10,10, 3 miles)
     * numberOfWeights // List of String (ex. push ups, sit ups, bench press -> BodyWeight, BodyWeight, 135 lbs)
     * isCompleted // Boolean
