@@ -2,14 +2,16 @@ package dynamodb.models;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
+
 public class WorkoutPlan {
 
     private String workoutPlanId;
     private String workoutDayName;
-    private List<String> exercisesAdded;
-    private List<Integer> numberOfSets;
-    private List<String> numberOfReps;
-    private List<String> numberOfWeights;
+    private Set<String> exercisesAdded;
+    private Set<Integer> numberOfSets;
+    private Set<String> numberOfReps;
+    private Set<String> numberOfWeights;
     private Boolean isCompleted;
     private String notesBox;
 
@@ -29,35 +31,35 @@ public class WorkoutPlan {
         this.workoutDayName = workoutDayName;
     }
 
-    public List<String> getExercisesAdded() {
+    public Set<String> getExercisesAdded() {
         return exercisesAdded;
     }
 
-    public void setExercisesAdded(List<String> exercisesAdded) {
+    public void setExercisesAdded(Set<String> exercisesAdded) {
         this.exercisesAdded = exercisesAdded;
     }
 
-    public List<Integer> getNumberOfSets() {
+    public Set<Integer> getNumberOfSets() {
         return numberOfSets;
     }
 
-    public void setNumberOfSets(List<Integer> numberOfSets) {
+    public void setNumberOfSets(Set<Integer> numberOfSets) {
         this.numberOfSets = numberOfSets;
     }
 
-    public List<String> getNumberOfReps() {
+    public Set<String> getNumberOfReps() {
         return numberOfReps;
     }
 
-    public void setNumberOfReps(List<String> numberOfReps) {
+    public void setNumberOfReps(Set<String> numberOfReps) {
         this.numberOfReps = numberOfReps;
     }
 
-    public List<String> getNumberOfWeights() {
+    public Set<String> getNumberOfWeights() {
         return numberOfWeights;
     }
 
-    public void setNumberOfWeights(List<String> numberOfWeights) {
+    public void setNumberOfWeights(Set<String> numberOfWeights) {
         this.numberOfWeights = numberOfWeights;
     }
 
