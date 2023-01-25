@@ -159,7 +159,7 @@ Resources:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessDynamoDBTablesRole.Arn
-      CodeUri: EmployeeContactServiceLambda
+      CodeUri: FitNSS
       Handler: lambda.CreateExerciseLambda::handleRequest
       Runtime: java11
       Architectures:
@@ -169,7 +169,7 @@ Resources:
         Variables:
           JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
       Events:
-        EmployeeManagementClient:
+        FitNSS:
           Type: Api
           Properties:
             Path: /exercises
