@@ -194,7 +194,7 @@ Resources:
             Path: /exercises/{exerciseId}
             Method: get
   GetAllExercisesLambda:
-    Type: AWS::Serverless:Function
+    Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessDynamoDBTablesRole.Arn
       CodeUri: FitNSS
@@ -212,6 +212,7 @@ Resources:
           Properties:
             Path: /exercises
             Method: get
+
   #-----------------------------------------------------------------
 
   ExercisesTable:
