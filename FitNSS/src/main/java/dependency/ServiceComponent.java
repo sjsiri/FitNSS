@@ -1,6 +1,7 @@
 package dependency;
 
 import activity.CreateExerciseActivity;
+import activity.GetExerciseActivity;
 import dagger.Component;
 
 import javax.inject.Singleton;
@@ -10,4 +11,6 @@ import javax.inject.Singleton;
 public interface ServiceComponent {
 
     CreateExerciseActivity provideCreateExerciseActivity();
+
+    GetExerciseActivity provideGetExerciseActivity();
 }
