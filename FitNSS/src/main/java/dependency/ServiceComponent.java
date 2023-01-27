@@ -1,6 +1,7 @@
 package dependency;
 
 import activity.CreateExerciseActivity;
+import activity.GetAllExercisesActivity;
 import activity.GetExerciseActivity;
 import dagger.Component;
 
@@ -13,4 +14,6 @@ public interface ServiceComponent {
     CreateExerciseActivity provideCreateExerciseActivity();
 
     GetExerciseActivity provideGetExerciseActivity();
+
+    GetAllExercisesActivity provideGetAllExercisesActivity();
 }
