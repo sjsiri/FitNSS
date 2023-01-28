@@ -6,6 +6,7 @@ import dynamodb.ExerciseDao;
 import dynamodb.models.Exercise;
 import exceptions.ExerciseNotFoundException;
 import metrics.MetricsPublisher;
+import models.ExerciseModel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -34,5 +35,8 @@ public class UpdateExerciseActivity {
 
         Exercise exercise = exerciseDao.getExercise(updateExerciseRequest.getExerciseId());
 
+        exerciseDao.saveExercise(exercise);
+        ExerciseModel exerciseModel = new ExerciseModel(exercise);
+        return UpdateExerciseResult.builder().withExerciseModel(exerciseModel).build();
     }
 }
