@@ -27,6 +27,7 @@ public class DeleteExerciseActivity {
         Exercise exercise = exerciseDao.getExercise(requestedExerciseId);
 
         exerciseDao.deleteExercise(exercise);
+        
         return DeleteExerciseResult.builder()
                 .withExercise(exercise)
                 .build();
