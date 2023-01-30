@@ -50,7 +50,7 @@ public class UpdateExerciseActivity {
         }
 
         if (updateExerciseRequest.getExerciseMovementGroup() != null) {
-            exercise.setWorkingMuscle(updateExerciseRequest.getWorkingMuscle());
+            exercise.setExerciseMovementGroup(updateExerciseRequest.getExerciseMovementGroup());
         }
         
 
