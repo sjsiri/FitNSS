@@ -17,7 +17,7 @@ public class UpdateExerciseActivity {
     private final Logger log = LogManager.getLogger();
 
     private final ExerciseDao exerciseDao;
-    
+
     @Inject
     public UpdateExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
