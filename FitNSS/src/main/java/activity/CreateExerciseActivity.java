@@ -5,6 +5,7 @@ import dynamodb.ExerciseDao;
 import dynamodb.models.Exercise;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import utils.FitNSSserviceUtils;
 
 import javax.inject.Inject;
 
@@ -23,7 +24,7 @@ public class CreateExerciseActivity {
         log.info("Received Create Exercise Request {}", request);
 
         Exercise exercise = new Exercise();
-        exercise.setExerciseId(request.getExerciseId());
+        exercise.setExerciseId(FitNSSserviceUtils.generateExerciseId());
         exercise.setExerciseName(request.getExerciseName());
         exercise.setExerciseMovementGroup(request.getExerciseMovementGroup());
         exercise.setWorkingMuscle(request.getWorkingMuscle());
