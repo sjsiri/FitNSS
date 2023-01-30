@@ -18,12 +18,12 @@ public class UpdateExerciseActivity {
 
     private final ExerciseDao exerciseDao;
 
-    private final MetricsPublisher metricsPublisher;
+//    private final MetricsPublisher metricsPublisher;
 
     @Inject
-    public UpdateExerciseActivity(ExerciseDao exerciseDao, MetricsPublisher metricsPublisher) {
+    public UpdateExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
-        this.metricsPublisher = metricsPublisher;
+//        this.metricsPublisher = metricsPublisher;
     }
 
     public UpdateExerciseResult handleRequest(final UpdateExerciseRequest updateExerciseRequest) {
