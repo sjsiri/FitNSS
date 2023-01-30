@@ -17,13 +17,10 @@ public class UpdateExerciseActivity {
     private final Logger log = LogManager.getLogger();
 
     private final ExerciseDao exerciseDao;
-
-//    private final MetricsPublisher metricsPublisher;
-
+    
     @Inject
     public UpdateExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
-//        this.metricsPublisher = metricsPublisher;
     }
 
     public UpdateExerciseResult handleRequest(final UpdateExerciseRequest updateExerciseRequest) {
