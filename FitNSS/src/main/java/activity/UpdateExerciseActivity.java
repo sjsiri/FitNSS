@@ -26,11 +26,33 @@ public class UpdateExerciseActivity {
     public UpdateExerciseResult handleRequest(final UpdateExerciseRequest updateExerciseRequest) {
         log.info("Received UpdateExerciseRequest {}", updateExerciseRequest);
 
+        if (updateExerciseRequest.getExerciseId() != null && !updateExerciseRequest.getPathExerciseId().equals(updateExerciseRequest.getExerciseId())) {
+            throw new ExerciseNotFoundException();
+        }
+
+        updateExerciseRequest.setExerciseId(updateExerciseRequest.getPathExerciseId());
+
         if (updateExerciseRequest.getExerciseId() == null || exerciseDao.getExercise(updateExerciseRequest.getExerciseId()) == null) {
             throw new ExerciseNotFoundException();
         }
 
-        Exercise exercise = exerciseDao.getExercise(updateExerciseRequest.getExerciseId());
+
+
+
+        Exercise exercise = exerciseDao.getExercise(updateExerciseRequest.getPathExerciseId());
+
+        if (updateExerciseRequest.getExerciseName() != null) {
+            exercise.setExerciseName(updateExerciseRequest.getExerciseName());
+        }
+
+        if (updateExerciseRequest.getWorkingMuscle() != null) {
+            exercise.setWorkingMuscle(updateExerciseRequest.getWorkingMuscle());
+        }
+
+        if (updateExerciseRequest.getExerciseMovementGroup() != null) {
+            exercise.setWorkingMuscle(updateExerciseRequest.getWorkingMuscle());
+        }
+        
 
         exerciseDao.saveExercise(exercise);
         ExerciseModel exerciseModel = new ExerciseModel(exercise);

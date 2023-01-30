@@ -11,6 +11,10 @@ public class UpdateExerciseResult {
         this.exerciseModel = exerciseModel;
     }
 
+    public ExerciseModel getExercise() {
+        return exerciseModel;
+    }
+
     @Override
     public String toString() {
         return "UpdateExerciseResult{" +

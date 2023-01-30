@@ -5,8 +5,9 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 @JsonDeserialize(builder = UpdateExerciseRequest.Builder.class)
 public class UpdateExerciseRequest {
-
     private String exerciseId;
+
+    private String pathExerciseId;
     private String exerciseName;
     private String workingMuscle;
     private String exerciseMovementGroup;
@@ -20,6 +21,18 @@ public class UpdateExerciseRequest {
 
     public String getExerciseId() {
         return exerciseId;
+    }
+
+    public void setExerciseId(String exerciseId) {
+        this.exerciseId = exerciseId;
+    }
+
+    public String getPathExerciseId() {
+        return pathExerciseId;
+    }
+
+    public void setPathExerciseId(String pathExerciseId) {
+        this.pathExerciseId = pathExerciseId;
     }
 
     public String getExerciseName() {
