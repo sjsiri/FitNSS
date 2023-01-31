@@ -4,6 +4,7 @@ import activity.requests.DeleteExerciseRequest;
 import activity.results.DeleteExerciseResult;
 import dynamodb.ExerciseDao;
 import dynamodb.models.Exercise;
+import exceptions.ExerciseNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -23,11 +24,20 @@ public class DeleteExerciseActivity {
     public DeleteExerciseResult handleRequest(final DeleteExerciseRequest deleteExerciseRequest) {
         log.info("Received DeleteExerciseRequest {}", deleteExerciseRequest);
 
-        String requestedExerciseId = deleteExerciseRequest.getExerciseId();
-        Exercise exercise = exerciseDao.getExercise(requestedExerciseId);
+        if (deleteExerciseRequest.getExerciseId() == null && !deleteExerciseRequest.getPathExerciseId().equals(deleteExerciseRequest.getExerciseId())) {
+            throw new ExerciseNotFoundException();
+        }
+
+        deleteExerciseRequest.setExerciseId(deleteExerciseRequest.getPathExerciseId());
+
+        if (exerciseDao.getExercise(deleteExerciseRequest.getExerciseId()) == null ) {
+            throw new ExerciseNotFoundException();
+        }
+
+        Exercise exercise = exerciseDao.getExercise(deleteExerciseRequest.getPathExerciseId());
 
         exerciseDao.deleteExercise(exercise);
-        
+
         return DeleteExerciseResult.builder()
                 .withExercise(exercise)
                 .build();

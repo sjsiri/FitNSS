@@ -201,6 +201,5 @@ public class ExerciseDao {
     public void deleteExercise(Exercise exercise) {
         exercise.setExerciseId(exercise.getExerciseId());
         this.dynamoDBMapper.delete(exercise);
-
     }
 }

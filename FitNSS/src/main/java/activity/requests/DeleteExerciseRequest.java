@@ -4,7 +4,15 @@ import com.amazonaws.services.dynamodbv2.model.Delete;
 
 public class DeleteExerciseRequest {
 
-    private final String exerciseId;
+    private String exerciseId;
+
+    private String pathExerciseId;
+
+    private String exerciseName;
+
+    private String workingMuscle;
+
+    private String exerciseMovementGroup;
 
     private DeleteExerciseRequest(String exerciseId) {
         this.exerciseId = exerciseId;
@@ -12,6 +20,30 @@ public class DeleteExerciseRequest {
 
     public String getExerciseId() {
         return exerciseId;
+    }
+
+    public void setExerciseId(String exerciseId) {
+        this.exerciseId = exerciseId;
+    }
+
+    public String getPathExerciseId() {
+        return pathExerciseId;
+    }
+
+    public void setPathExerciseId(String pathExerciseId) {
+        this.pathExerciseId = pathExerciseId;
+    }
+
+    public String getExerciseName() {
+        return exerciseName;
+    }
+
+    public String getWorkingMuscle() {
+        return workingMuscle;
+    }
+
+    public String getExerciseMovementGroup() {
+        return exerciseMovementGroup;
     }
 
     @Override
