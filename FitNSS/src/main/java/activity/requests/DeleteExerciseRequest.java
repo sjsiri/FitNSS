@@ -8,11 +8,6 @@ public class DeleteExerciseRequest {
 
     private String pathExerciseId;
 
-    private String exerciseName;
-
-    private String workingMuscle;
-
-    private String exerciseMovementGroup;
 
     private DeleteExerciseRequest(String exerciseId) {
         this.exerciseId = exerciseId;
@@ -34,17 +29,6 @@ public class DeleteExerciseRequest {
         this.pathExerciseId = pathExerciseId;
     }
 
-    public String getExerciseName() {
-        return exerciseName;
-    }
-
-    public String getWorkingMuscle() {
-        return workingMuscle;
-    }
-
-    public String getExerciseMovementGroup() {
-        return exerciseMovementGroup;
-    }
 
     @Override
     public String toString() {

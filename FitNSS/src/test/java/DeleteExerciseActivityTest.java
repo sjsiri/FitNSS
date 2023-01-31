@@ -22,7 +22,7 @@ public class DeleteExerciseActivityTest {
         openMocks(this);
     }
 
-    //@Test
+//    @Test
 //    void handleRequest_attemptsToDeleteMember() {
 //        // GIVEN
 //        Exercise exercise = new Exercise();
@@ -30,8 +30,9 @@ public class DeleteExerciseActivityTest {
 //        exercise.setExerciseId(exerciseId);
 //
 //
+//
 //        // WHEN
-//        activity.handleRequest(DeleteExerciseRequest.builder().withExerciseId(exerciseId).build());
+//        activity.handleRequest(DeleteExerciseRequest.builder().withExerciseId(exercise.getExerciseId()).build());
 //
 //        // THEN
 //        verify(exerciseDao).deleteExercise(exercise);

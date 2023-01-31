@@ -236,7 +236,7 @@ Resources:
     Properties:
       Role: !GetAtt AccessDynamoDBTablesRole.Arn
       CodeUri: FitNSS
-      Handler: lambda.UpdateExerciseLambda::handleRequest
+      Handler: lambda.DeleteExerciseLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64

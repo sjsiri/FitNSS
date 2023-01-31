@@ -24,17 +24,16 @@ public class DeleteExerciseActivity {
     public DeleteExerciseResult handleRequest(final DeleteExerciseRequest deleteExerciseRequest) {
         log.info("Received DeleteExerciseRequest {}", deleteExerciseRequest);
 
-        if (deleteExerciseRequest.getExerciseId() == null && !deleteExerciseRequest.getPathExerciseId().equals(deleteExerciseRequest.getExerciseId())) {
+        if (deleteExerciseRequest.getExerciseId() == null) {
             throw new ExerciseNotFoundException();
         }
 
-        deleteExerciseRequest.setExerciseId(deleteExerciseRequest.getPathExerciseId());
 
         if (exerciseDao.getExercise(deleteExerciseRequest.getExerciseId()) == null ) {
             throw new ExerciseNotFoundException();
         }
 
-        Exercise exercise = exerciseDao.getExercise(deleteExerciseRequest.getPathExerciseId());
+        Exercise exercise = exerciseDao.getExercise(deleteExerciseRequest.getExerciseId());
 
         exerciseDao.deleteExercise(exercise);
 
