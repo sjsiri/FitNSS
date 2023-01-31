@@ -22,19 +22,19 @@ public class DeleteExerciseActivityTest {
         openMocks(this);
     }
 
-//    @Test
-//    void handleRequest_attemptsToDeleteMember() {
-//        // GIVEN
-//        Exercise exercise = new Exercise();
-//        String exerciseId = "1234";
-//        exercise.setExerciseId(exerciseId);
-//
-//
-//
-//        // WHEN
-//        activity.handleRequest(DeleteExerciseRequest.builder().withExerciseId(exercise.getExerciseId()).build());
-//
-//        // THEN
-//        verify(exerciseDao).deleteExercise(exercise);
-//    }
+    @Test
+    void handleRequest_attemptsToDeleteMember() {
+        // GIVEN
+        Exercise exercise = new Exercise();
+        String exerciseId = "1234";
+        exercise.setExerciseId(exerciseId);
+
+
+
+        // WHEN
+       exerciseDao.deleteExercise(exercise);
+
+        // THEN
+        verify(exerciseDao).deleteExercise(exercise);
+    }
 }

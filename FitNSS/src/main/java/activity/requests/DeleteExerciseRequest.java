@@ -6,8 +6,6 @@ public class DeleteExerciseRequest {
 
     private String exerciseId;
 
-    private String pathExerciseId;
-
 
     private DeleteExerciseRequest(String exerciseId) {
         this.exerciseId = exerciseId;
@@ -20,15 +18,6 @@ public class DeleteExerciseRequest {
     public void setExerciseId(String exerciseId) {
         this.exerciseId = exerciseId;
     }
-
-    public String getPathExerciseId() {
-        return pathExerciseId;
-    }
-
-    public void setPathExerciseId(String pathExerciseId) {
-        this.pathExerciseId = pathExerciseId;
-    }
-
 
     @Override
     public String toString() {
