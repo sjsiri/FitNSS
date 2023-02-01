@@ -259,8 +259,6 @@ Resources:
       AttributeDefinitions:
         - AttributeName: "exerciseId"
           AttributeType: "S"
-        - AttributeName: "exerciseName"
-          AttributeType: "S"
         - AttributeName: "workingMuscle"
           AttributeType: "S"
         - AttributeName: "exerciseMovementGroup"
@@ -275,16 +273,12 @@ Resources:
           KeySchema:
             - AttributeName: "exerciseMovementGroup"
               KeyType: "HASH"
-            - AttributeName: "exerciseName"
-              KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
         - IndexName: "ExerciseByMuscleIndex"
           KeySchema:
             - AttributeName: "workingMuscle"
               KeyType: "HASH"
-            - AttributeName: "exerciseName"
-              KeyType: "RANGE"
           Projection:
             ProjectionType: "ALL"
 

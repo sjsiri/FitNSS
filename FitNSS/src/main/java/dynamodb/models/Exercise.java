@@ -2,12 +2,15 @@ package dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBIndexHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.Objects;
 
 @DynamoDBTable(tableName = "Exercises")
 public class Exercise {
+
+    public static final String EXERCISEMOVEMENT_GSI = "ExerciseByMovementIndex";
 
     private String exerciseId;
     private String exerciseName;
@@ -41,6 +44,7 @@ public class Exercise {
         this.workingMuscle = workingMuscle;
     }
 
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = EXERCISEMOVEMENT_GSI)
     @DynamoDBAttribute(attributeName = "exerciseMovementGroup")
     public String getExerciseMovementGroup() {
         return exerciseMovementGroup;

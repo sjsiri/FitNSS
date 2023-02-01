@@ -1,10 +1,12 @@
 package dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import dynamodb.models.Exercise;
 import exceptions.ExerciseNotFoundException;
+import org.w3c.dom.Attr;
 
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -13,6 +15,7 @@ import java.util.Map;
 
 public class ExerciseDao {
 
+    private static final int PAGE_SIZE = 10;
     private final DynamoDBMapper dynamoDBMapper;
 
     /**
@@ -48,6 +51,29 @@ public class ExerciseDao {
         return dynamoDBMapper.scan(Exercise.class, scanExpression);
     }
 
+    public List<Exercise> getAllExercisesByMovementWithLimit(String exerciseStartKey, Boolean forward, String exerciseMovementGroup) {
+        Map<String, AttributeValue> startKeyMap = new HashMap<>();
+        Map<String, AttributeValue> valueMap = new HashMap<>();
+
+        DynamoDBQueryExpression<Exercise> queryExpression = new DynamoDBQueryExpression<Exercise>()
+                .withScanIndexForward(forward)
+                .withLimit(PAGE_SIZE)
+                .withExclusiveStartKey(startKeyMap)
+                .withExpressionAttributeValues(valueMap)
+                .withConsistentRead(false);
+
+        if (exerciseMovementGroup != null) {
+            startKeyMap.put("exerciseMovementGroup", new AttributeValue().withS(exerciseMovementGroup));
+            valueMap.put(":exerciseMovementGroup", new AttributeValue().withS(exerciseMovementGroup));
+
+            queryExpression.setIndexName(Exercise.EXERCISEMOVEMENT_GSI);
+            queryExpression.setKeyConditionExpression("exerciseMovementGroup = :exerciseMovementGroup");
+        } else {
+            getAllExercises(exerciseStartKey);
+        }
+
+        return dynamoDBMapper.queryPage(Exercise.class, queryExpression).getResults();
+    }
     public List<Exercise> getAllPushingMovementExercises(String exerciseStartKey) {
         Map<String, AttributeValue> valueMap = new HashMap<>();
         valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Push"));
