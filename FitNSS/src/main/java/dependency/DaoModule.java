@@ -1,6 +1,5 @@
 package dependency;
 
-import com.amazonaws.regions.Regions;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapperConfig;
 import com.nashss.se.aws.dynamodb.DynamoDbClientProvider;
@@ -15,7 +14,7 @@ public class DaoModule {
 @Singleton
 @Provides
     public DynamoDBMapper provideDynamoDBMapper() {
-        return new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(Regions.US_EAST_2),
+        return new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(),
             DynamoDBMapperConfig.builder()
             .withSaveBehavior(DynamoDBMapperConfig.SaveBehavior.UPDATE_SKIP_NULL_ATTRIBUTES)
             .build());
