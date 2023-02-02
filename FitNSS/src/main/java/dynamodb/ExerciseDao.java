@@ -51,26 +51,38 @@ public class ExerciseDao {
         return dynamoDBMapper.scan(Exercise.class, scanExpression);
     }
 
-    public List<Exercise> getAllExercisesByMovementGroupWithLimit(String exerciseStartKey, Boolean forward, String exerciseMovementGroup) {
+    public List<Exercise> getAllExercisesByMovementGroupWithLimit(String exerciseMovementGroup) {
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
         Map<String, AttributeValue> valueMap = new HashMap<>();
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 
-        DynamoDBQueryExpression<Exercise> queryExpression = new DynamoDBQueryExpression<Exercise>()
-                .withScanIndexForward(forward)
-                .withLimit(PAGE_SIZE)
-                .withExclusiveStartKey(startKeyMap)
-                .withConsistentRead(false);
 
-        if (exerciseMovementGroup != null) {
-            startKeyMap.put("exerciseMovementGroup", new AttributeValue().withS(exerciseMovementGroup));
-            valueMap.put(":exerciseMovementGroup", new AttributeValue().withS(exerciseMovementGroup));
-        } else {
-            DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
-            return dynamoDBMapper.scan(Exercise.class, scanExpression);
+        switch (exerciseMovementGroup) {
+            case "Push":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Push"));
+                DynamoDBScanExpression dynamoDBScanExpression = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+                return dynamoDBMapper.scan(Exercise.class, dynamoDBScanExpression);
+            case "Pull":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Pull"));
+
+                DynamoDBScanExpression scanExpression2 = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+
+                return dynamoDBMapper.scan(Exercise.class, scanExpression2);
+            case "Lower":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Lower"));
+
+                DynamoDBScanExpression scanExpression3 = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+
+                return dynamoDBMapper.scan(Exercise.class, scanExpression3);
+            default:
+                return dynamoDBMapper.scan(Exercise.class, scanExpression);
         }
-        startKeyMap.put("exerciseName", new AttributeValue().withS(exerciseStartKey));
-
-        return dynamoDBMapper.queryPage(Exercise.class, queryExpression).getResults();
     }
 
     /**
