@@ -23,7 +23,7 @@ public class GetAllExercisesByMovementGroupActivity {
     public GetAllExercisesResult handleRequest(final GetAllExercisesRequest getAllExercisesRequest) {
         log.info("Received GetAllExerciseRequestByMovementGroup {}", getAllExercisesRequest);
         String requestedMovementGroup = getAllExercisesRequest.getExerciseMovementGroup();
-        List<Exercise> exerciseList = exerciseDao.getAllExercisesByMovementGroupWithLimit(requestedMovementGroup);
+        List<Exercise> exerciseList = exerciseDao.getAllExercisesByMovementGroup(requestedMovementGroup);
 
         return GetAllExercisesResult.builder()
                 .withExerciseList(exerciseList)

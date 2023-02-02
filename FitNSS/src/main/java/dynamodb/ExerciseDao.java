@@ -7,6 +7,7 @@ import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import dynamodb.models.Exercise;
 import exceptions.ExerciseNotFoundException;
 import org.checkerframework.checker.units.qual.A;
+import org.w3c.dom.Attr;
 
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -51,7 +52,7 @@ public class ExerciseDao {
         return dynamoDBMapper.scan(Exercise.class, scanExpression);
     }
 
-    public List<Exercise> getAllExercisesByMovementGroupWithLimit(String exerciseMovementGroup) {
+    public List<Exercise> getAllExercisesByMovementGroup(String exerciseMovementGroup) {
         Map<String, AttributeValue> startKeyMap = new HashMap<>();
         Map<String, AttributeValue> valueMap = new HashMap<>();
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
@@ -84,6 +85,8 @@ public class ExerciseDao {
                 return dynamoDBMapper.scan(Exercise.class, scanExpression);
         }
     }
+
+
 
     /**
      * Saves (creates or updates) the given Exercise*
