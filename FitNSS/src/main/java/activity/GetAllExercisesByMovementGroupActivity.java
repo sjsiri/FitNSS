@@ -21,7 +21,7 @@ public class GetAllExercisesByMovementGroupActivity {
     }
 
     public GetAllExercisesResult handleRequest(final GetAllExercisesRequest getAllExercisesRequest) {
-        log.info("Recieved GetAllExerciseRequestByMovementGroup {}", getAllExercisesRequest);
+        log.info("Received GetAllExerciseRequestByMovementGroup {}", getAllExercisesRequest);
         String requestedMovementGroup = getAllExercisesRequest.getExerciseMovementGroup();
         List<Exercise> exerciseList = exerciseDao.getAllExercisesByMovementGroupWithLimit(requestedMovementGroup);
 

@@ -15,4 +15,6 @@ public interface ServiceComponent {
     UpdateExerciseActivity provideUpdateExerciseActivity();
 
     DeleteExerciseActivity provideDeleteExerciseActivity();
+
+    GetAllExercisesByMovementGroupActivity provideGetAllExercisesByMovementGroupActivity();
 }
