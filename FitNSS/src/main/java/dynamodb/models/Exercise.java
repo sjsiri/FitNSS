@@ -1,13 +1,13 @@
 package dynamodb.models;
 
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
-import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.amazonaws.services.dynamodbv2.datamodeling.*;
 
 import java.util.Objects;
 
 @DynamoDBTable(tableName = "Exercises")
 public class Exercise {
+
+    private static final String ExerciseByMovementIndex = "ExerciseByMovementIndex";
 
     private String exerciseId;
     private String exerciseName;
@@ -24,6 +24,7 @@ public class Exercise {
     }
 
     @DynamoDBAttribute(attributeName = "exerciseName")
+    @DynamoDBIndexRangeKey(globalSecondaryIndexName = ExerciseByMovementIndex)
     public String getExerciseName() {
         return exerciseName;
     }
@@ -41,6 +42,7 @@ public class Exercise {
         this.workingMuscle = workingMuscle;
     }
 
+    @DynamoDBIndexHashKey(globalSecondaryIndexName = ExerciseByMovementIndex)
     @DynamoDBAttribute(attributeName = "exerciseMovementGroup")
     public String getExerciseMovementGroup() {
         return exerciseMovementGroup;

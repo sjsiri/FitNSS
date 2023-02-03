@@ -1,10 +1,13 @@
 package dynamodb;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBQueryExpression;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBScanExpression;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
 import dynamodb.models.Exercise;
 import exceptions.ExerciseNotFoundException;
+import org.checkerframework.checker.units.qual.A;
+import org.w3c.dom.Attr;
 
 import javax.inject.Inject;
 import java.util.HashMap;
@@ -14,6 +17,7 @@ import java.util.Map;
 public class ExerciseDao {
 
     private final DynamoDBMapper dynamoDBMapper;
+    private static final int PAGE_SIZE = 10;
 
     /**
      * Instantiates a ExerciseDao object*
@@ -48,148 +52,42 @@ public class ExerciseDao {
         return dynamoDBMapper.scan(Exercise.class, scanExpression);
     }
 
-    public List<Exercise> getAllPushingMovementExercises(String exerciseStartKey) {
+    public List<Exercise> getAllExercisesByMovementGroup(String exerciseMovementGroup) {
+        Map<String, AttributeValue> startKeyMap = new HashMap<>();
         Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Push"));
+        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
 
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
-                .withExpressionAttributeValues(valueMap);
 
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
+        switch (exerciseMovementGroup) {
+            case "Push":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Push"));
+                DynamoDBScanExpression dynamoDBScanExpression = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+                return dynamoDBMapper.scan(Exercise.class, dynamoDBScanExpression);
+            case "Pull":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Pull"));
+
+                DynamoDBScanExpression scanExpression2 = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+
+                return dynamoDBMapper.scan(Exercise.class, scanExpression2);
+            case "Lower":
+                valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Lower"));
+
+                DynamoDBScanExpression scanExpression3 = new DynamoDBScanExpression()
+                        .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
+                        .withExpressionAttributeValues(valueMap);
+
+                return dynamoDBMapper.scan(Exercise.class, scanExpression3);
+            default:
+                return dynamoDBMapper.scan(Exercise.class, scanExpression);
+        }
     }
 
-    public List<Exercise> getAllPullingMovementExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Pull"));
 
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
-                .withExpressionAttributeValues(valueMap);
 
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllLowerMovementExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":exerciseMovementGroup", new AttributeValue().withS("Lower"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("exerciseMovementGroup = :exerciseMovementGroup")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllChestMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Chest"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllBackMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Back"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllBicepMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Biceps"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllTricepsMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Triceps"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllShouldersMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Shoulders"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllHamstringsMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Hamstring"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllQuadMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Quadriceps"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllGlutesMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Glutes"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllCalvesMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Calves"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
-
-    public List<Exercise> getAllAbsMuscleExercises(String exerciseStartKey) {
-        Map<String, AttributeValue> valueMap = new HashMap<>();
-        valueMap.put(":workingMuscle", new AttributeValue().withS("Abdominal"));
-
-        DynamoDBScanExpression scanExpression = new DynamoDBScanExpression()
-                .withFilterExpression("workingMuscle = :workingMuscle")
-                .withExpressionAttributeValues(valueMap);
-
-        return dynamoDBMapper.scan(Exercise.class, scanExpression);
-    }
     /**
      * Saves (creates or updates) the given Exercise*
      * @param exercise the exercise to save
