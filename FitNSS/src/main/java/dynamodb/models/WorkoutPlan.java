@@ -2,11 +2,13 @@ package dynamodb.models;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+@DynamoDBTable(tableName = "WorkoutPlan")
 public class WorkoutPlan {
 
     private String workoutPlanId;
