@@ -1,19 +1,26 @@
 package dynamodb.models;
 
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
+import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+@DynamoDBTable(tableName = "WorkoutPlan")
 public class WorkoutPlan {
 
     private String workoutPlanId;
     private String workoutDayName;
-    private Set<String> exercisesAdded;
-    private Set<Integer> numberOfSets;
-    private Set<String> numberOfReps;
-    private Set<String> numberOfWeights;
+    private List<String> exercisesAdded;
+    private List<Integer> numberOfSets;
+    private List<String> numberOfReps;
+    private List<String> numberOfWeights;
     private Boolean isCompleted;
     private String notesBox;
 
+    @DynamoDBHashKey(attributeName = "workoutPlanId")
     public String getWorkoutPlanId() {
         return workoutPlanId;
     }
@@ -22,6 +29,7 @@ public class WorkoutPlan {
         this.workoutPlanId = workoutPlanId;
     }
 
+    @DynamoDBAttribute(attributeName = "workoutDayName")
     public String getWorkoutDayName() {
         return workoutDayName;
     }
@@ -30,38 +38,43 @@ public class WorkoutPlan {
         this.workoutDayName = workoutDayName;
     }
 
-    public Set<String> getExercisesAdded() {
+    @DynamoDBAttribute(attributeName = "exercisesAdded")
+    public List<String> getExercisesAdded() {
         return exercisesAdded;
     }
 
-    public void setExercisesAdded(Set<String> exercisesAdded) {
+    public void setExercisesAdded(List<String> exercisesAdded) {
         this.exercisesAdded = exercisesAdded;
     }
 
-    public Set<Integer> getNumberOfSets() {
+   @DynamoDBAttribute(attributeName = "numberOfSets")
+    public List<Integer> getNumberOfSets() {
         return numberOfSets;
     }
 
-    public void setNumberOfSets(Set<Integer> numberOfSets) {
+    public void setNumberOfSets(List<Integer> numberOfSets) {
         this.numberOfSets = numberOfSets;
     }
 
-    public Set<String> getNumberOfReps() {
+    @DynamoDBAttribute(attributeName = "numberOfReps")
+    public List<String> getNumberOfReps() {
         return numberOfReps;
     }
 
-    public void setNumberOfReps(Set<String> numberOfReps) {
+    public void setNumberOfReps(List<String> numberOfReps) {
         this.numberOfReps = numberOfReps;
     }
 
-    public Set<String> getNumberOfWeights() {
+    @DynamoDBAttribute(attributeName = "numberOfWeights")
+    public List<String> getNumberOfWeights() {
         return numberOfWeights;
     }
 
-    public void setNumberOfWeights(Set<String> numberOfWeights) {
+    public void setNumberOfWeights(List<String> numberOfWeights) {
         this.numberOfWeights = numberOfWeights;
     }
 
+    @DynamoDBAttribute(attributeName = "isCompleted")
     public Boolean getCompleted() {
         return isCompleted;
     }
@@ -70,6 +83,7 @@ public class WorkoutPlan {
         isCompleted = completed;
     }
 
+    @DynamoDBAttribute(attributeName = "notesBox")
     public String getNotesBox() {
         return notesBox;
     }
