@@ -1,6 +1,7 @@
 package activity;
 
 import activity.requests.CreateExerciseRequest;
+import activity.results.CreateExerciseResult;
 import dynamodb.ExerciseDao;
 import dynamodb.models.Exercise;
 import org.apache.logging.log4j.LogManager;
@@ -20,7 +21,7 @@ public class CreateExerciseActivity {
         log = LogManager.getLogger();
     }
 
-    public src.main.java.activity.results.CreateExerciseResult handleRequest(CreateExerciseRequest request) {
+    public CreateExerciseResult handleRequest(CreateExerciseRequest request) {
         log.info("Received Create Exercise Request {}", request);
 
         Exercise exercise = new Exercise();
@@ -31,7 +32,7 @@ public class CreateExerciseActivity {
 
         exerciseDao.saveExercise(exercise);
 
-        return src.main.java.activity.results.CreateExerciseResult.builder()
+        return CreateExerciseResult.builder()
                 .withExercise(exercise)
                 .build();
     }
