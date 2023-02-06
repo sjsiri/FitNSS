@@ -1,4 +1,4 @@
-package src.main.java.activity.results;
+package activity.results;
 
 import dynamodb.models.Exercise;
 

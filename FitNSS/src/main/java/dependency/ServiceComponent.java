@@ -21,4 +21,7 @@ public interface ServiceComponent {
     GetAllExercisesByMuscleActivity provideGetAllExercisesByMuscle();
 
     GetWorkoutPlanActivity provideGetWorkoutPlanActivity();
+
+    GetAllWorkoutPlanActivity provideGetAllWorkoutPlanActivity();
+
 }
