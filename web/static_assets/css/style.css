@@ -1,182 +1,225 @@
-@import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700&display=swap');
+@import url(https://fonts.googleapis.com/css?family=Oxygen:400,300);
+@import url(https://fonts.googleapis.com/css?family=Montserrat:700);
+
+:root {
+    /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+    --primary-color: #5D5E5E;
+    --secondary-color: #ffffff;
+    --tertiary-color: #ADD8E6;
+    --error-color: #EE3A23;
+}
+
+.background {
+    background-color: #8A8C8F;
+    margin: 0;
+    counter-reset: section;
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+}
+
+.header {
+    /* Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    padding: 4px 20px;
+}
+
+.button {
+  background-color: var(--tertiary-color);
+  border: none;
+  color: var(--secondary-color);
+  padding: 6px 8px 4px 8px;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header_home {
+    font-size: 36px;
+    line-height: 40px;
+    height: 100px;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
+.card {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    margin: 20px;
+    padding: 10px 20px;
+}
+
+.error {
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+    padding: 8px;
+}
+
+.validated-field:invalid {
+    outline: 2px solid var(--error-color);
+}
+.validated-field:focus:invalid {
+    color: var(--error-color);
+}
+
+.card-content {
+    max-width: 500px;
+}
+
+.card-content .form-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.tags {
+    display: flex;
+    flex-direction: row;
+}
+
+.tag {
+    font-size: 12px;
+    margin: 0 10px;
+    padding: 4px 8px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    position: relative;
+    border-radius: 16px;
+}
+
+.song {
+    padding: 2px;
+    display: flex;
+}
+
+.song .title {
+    flex: 20%;
+}
+
+.song .album {
+    flex: 80%;
+}
+
+/*
+Flexbox on a lists removes the numbers. We use a counter here to add them back.
+https://stackoverflow.com/a/34316093
+https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
+*/
+.song:before {
+    counter-increment: section;
+    content: counter(section) ".";
+    position: absolute;
+    margin-left: -40px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* table styles */
+
+th, td {
+    padding: 15px;
+    text-align: left;
+}
+
+th {
+    border-bottom: 1px solid var(--primary-color);
+}
+
+a {
+    color: var(--tertiary-color);
+    text-decoration: none;
+}
+
 *{
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
 }
-html,body{
-  display: grid;
-  height: 100%;
-  width: 100%;
-  place-items: center;
-  background: -webkit-linear-gradient(left, #0D3B6A, #1C4D8D);
+.intro{
+  margin: auto;
 }
-::selection{
-  background: #0D3B6A;
-  color: #fff;
-}
-.wrapper{
-  overflow: hidden;
-  max-width: 390px;
-  background: #fff;
-  padding: 30px;
-  border-radius: 5px;
-  box-shadow: 0px 15px 20px rgba(0,0,0,0.1);
-}
-.wrapper .title-text{
-  display: flex;
-  width: 200%;
-}
-.wrapper .title{
+.black {
   width: 50%;
-  font-size: 35px;
-  font-weight: 600;
+  float: left;
+  background: linear-gradient(to bottom right, #6699ff 0%, #000066 100%);
+  height: 100vh;
+}
+
+.white{
+  width: 50%;
+  float: right;
+  background: linear-gradient(to bottom left, #6699ff 0%, #000066 100%);
+  height: 100vh;
+}
+
+.box{
+  height: 300px;
+  width: 500px;
+  background: linear-gradient(to left, #003366 0%, #99ccff 100%);
+  position:absolute;
+  top:150px;
+  left:0;
+  right:0;
+  margin:auto;
+  border-radius:20px;
+}
+
+.boxfather{
+  width:100%;
+  position:absolute;
+}
+.box h1{
+  color: #E4E4E4;
+  font-size: 5em;
   text-align: center;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-.wrapper .slide-controls{
   position: relative;
-  display: flex;
-  height: 50px;
-  width: 100%;
-  overflow: hidden;
-  margin: 30px 0 10px 0;
-  justify-content: space-between;
-  border: 1px solid lightgrey;
-  border-radius: 5px;
+  top:70px;
+  font-family: 'Montserrat', sans-serif;
 }
-.slide-controls .slide{
-  height: 100%;
-  width: 100%;
-  color: #fff;
+
+.box button{
+  left:43%;
+  position:relative;
+  top:120px;
+  padding: 8px 20px;
+  cursor:pointer;
+  border:0;
+  outline:none;
+  color:#525252;
+  background:#E4E4E4;
+  transition:all .3s ease;
+  font-size: 19px;
+  font-family: montserrat;
+  border-radius:5px;
+}
+.homepage{
+  height: 100vh;
+  position:relative;
+  top:40px;
+
+
+}
+.homepage p{
+  width: 80%;
+  line-height: 1.5;
+  margin:50px auto;
+  font-family: oxygen;
   font-size: 18px;
-  font-weight: 500;
-  text-align: center;
-  line-height: 48px;
-  cursor: pointer;
-  z-index: 1;
-  transition: all 0.6s ease;
+  color: #585858;
 }
-.slide-controls label.signup{
-  color: #000;
-}
-.slide-controls .slider-tab{
-  position: absolute;
-  height: 100%;
-  width: 50%;
-  left: 0;
-  z-index: 0;
-  border-radius: 5px;
-  background: -webkit-linear-gradient(left, #0D3B6A, #5EA1F8);
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-input[type="radio"]{
-  display: none;
-}
-#signup:checked ~ .slider-tab{
-  left: 50%;
-}
-#signup:checked ~ label.signup{
-  color: #fff;
-  cursor: default;
-  user-select: none;
-}
-#signup:checked ~ label.login{
-  color: #000;
-}
-#login:checked ~ label.signup{
-  color: #000;
-}
-#login:checked ~ label.login{
-  cursor: default;
-  user-select: none;
-}
-.wrapper .form-container{
-  width: 100%;
-  overflow: hidden;
-}
-.form-container .form-inner{
-  display: flex;
-  width: 200%;
-}
-.form-container .form-inner form{
-  width: 50%;
-  transition: all 0.6s cubic-bezier(0.68,-0.55,0.265,1.55);
-}
-.form-inner form .field{
-  height: 50px;
-  width: 100%;
-  margin-top: 20px;
-}
-.form-inner form .field input{
-  height: 100%;
-  width: 100%;
-  outline: none;
-  padding-left: 15px;
-  border-radius: 5px;
-  border: 1px solid lightgrey;
-  border-bottom-width: 2px;
-  font-size: 17px;
-  transition: all 0.3s ease;
-}
-.form-inner form .field input:focus{
-  border-color: #fc83bb;
-  /* box-shadow: inset 0 0 3px #fb6aae; */
-}
-.form-inner form .field input::placeholder{
-  color: #999;
-  transition: all 0.3s ease;
-}
-form .field input:focus::placeholder{
-  color: #b3b3b3;
-}
-.form-inner form .pass-link{
-  margin-top: 5px;
-}
-.form-inner form .signup-link{
-  text-align: center;
-  margin-top: 30px;
-}
-.form-inner form .pass-link a,
-.form-inner form .signup-link a{
-  color: #0D3B6A;
-  text-decoration: none;
-}
-.form-inner form .pass-link a:hover,
-.form-inner form .signup-link a:hover{
-  text-decoration: underline;
-}
-form .btn{
-  height: 50px;
-  width: 100%;
-  border-radius: 5px;
-  position: relative;
-  overflow: hidden;
-}
-form .btn .btn-layer{
-  height: 100%;
-  width: 300%;
-  position: absolute;
-  left: -100%;
-  background: -webkit-linear-gradient(right, #2F6DBE, #3E7FD5, #498FEA, #5EA1F8);
-  border-radius: 5px;
-  transition: all 0.4s ease;;
-}
-form .btn:hover .btn-layer{
-  left: 0;
-}
-form .btn input[type="submit"]{
-  height: 100%;
-  width: 100%;
-  z-index: 1;
-  position: relative;
-  background: none;
-  border: none;
-  color: #fff;
-  padding-left: 0;
-  border-radius: 5px;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
+.homepage h1{
+  padding-top: 50px;
+  width: 80%;
+  margin:auto;
+  font-family: montserrat;
+  color: #525252;
+  font-size: 40px;
 }

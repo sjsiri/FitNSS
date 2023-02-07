@@ -1,4 +1,4 @@
-import FitNSS from '../api/fitnssclient';
+import FitNSSClient from '../api/fitnssclient';
 import BindingClass from "../util/bindingClass";
 /**
  * The header component for the website.
@@ -13,7 +13,7 @@ export default class Header extends BindingClass {
         ];
         this.bindClassMethods(methodsToBind, this);
 
-        this.client = new FitNSS();
+        this.client = new FitNSSClient();
     }
 
     /**
@@ -34,7 +34,7 @@ export default class Header extends BindingClass {
         const homeButton = document.createElement('a');
         homeButton.classList.add('header_home');
         homeButton.href = 'index.html';
-        homeButton.innerText = 'Playlists';
+        homeButton.innerText = 'Home';
 
         const siteTitle = document.createElement('div');
         siteTitle.classList.add('site-title');
