@@ -15,7 +15,7 @@ export default class FitNSS extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getAllWorkoutPlans'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -71,6 +71,20 @@ export default class FitNSS extends BindingClass {
         return await this.authenticator.getUserToken();
     }
 
+    /**
+     * Get all the workout plans on the list.
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The list of workout plans.
+     */
+
+     async getAllWorkoutPlans(errorCallback) {
+            try {
+                const response = await this.client.get(`workoutplans`);
+                return response.data.workoutplans;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+      }
 
     /**
      * Helper method to log the error and run any error functions.
@@ -90,4 +104,5 @@ export default class FitNSS extends BindingClass {
             errorCallback(error);
         }
     }
+
 }

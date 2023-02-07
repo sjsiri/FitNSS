@@ -24,6 +24,7 @@ module.exports = {
   },
   entry: {
     indexPage: path.resolve(__dirname, 'src', 'pages', 'indexPage.js'),
+    viewWorkoutPlans: path.resolve(__dirname, 'src', 'pages', 'viewWorkoutplans.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),
