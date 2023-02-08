@@ -10,7 +10,7 @@ import Authenticator from "./authenticator";
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes#Mix-ins
  * https://javascript.info/mixins
   */
-export default class FitNSS extends BindingClass {
+export default class FitNSSClient extends BindingClass {
 
     constructor(props = {}) {
         super();
@@ -79,8 +79,8 @@ export default class FitNSS extends BindingClass {
 
      async getAllWorkoutPlans(errorCallback) {
             try {
-                const response = await this.client.get(`workoutplans`);
-                return response.data.workoutplans;
+                const response = await this.axiosClient.get(`workoutplan`);
+                return response.data.workoutplan;
             } catch (error) {
                 this.handleError(error, errorCallback)
             }

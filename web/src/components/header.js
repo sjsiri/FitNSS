@@ -16,6 +16,7 @@ export default class Header extends BindingClass {
         this.client = new FitNSSClient();
     }
 
+
     /**
      * Add the header to the page.
      */
@@ -76,4 +77,6 @@ export default class Header extends BindingClass {
 
         return button;
     }
+
+
 }

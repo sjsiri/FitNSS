@@ -21,9 +21,9 @@ class ViewWorkoutPlans extends BindingClass {
     * Once the client is loaded, get the workout plan list.
     */
     async clientLoaded() {
-        document.getElementById('workoutList').innerText = "(Loading workout plan list...)";
-        const workoutList = await this.client.getAllWorkoutPlans();
-        this.dataStore.set('workoutList', workoutList)
+        document.getElementById('workoutplan').innerText = "(Loading Workout Plan List...)";
+        const workoutplan = await this.client.getAllWorkoutPlans();
+        this.dataStore.set('workoutplan', workoutplan);
     }
 
 /**
@@ -31,58 +31,43 @@ class ViewWorkoutPlans extends BindingClass {
  */
     async mount() {
         this.header.addHeaderToPage();
-        this.header.loadData();
         this.client = new FitNSSClient();
         await this.clientLoaded();
     }
 
-    async generateList(newList, data) {
-        if (data.length != 0) {
-            for (let element of data) {
-               let row = newList.insertRow();
 
-               row.addEventListener('click', async evt => {
-                    window.location.href = '/view_workoutPlan.html?id=${element.workoutPlanId}';
-               });
 
-               let cell = row.insertCell();
-               let text = document.createTextNode(element.workoutPlanId);
-               cell.appendChild(text);
-
-               cell = row.insertCell();
-               text = document.createTextNode(element.workoutPlanName);
-               cell.appendChild(text);
-            }
-        }
-    }
-/**
- * When the workout plans are updated in the datastore, update the list of workout plans on the page.
- */
+ /**
+     * When the workouts are updated in the datastore, update the list of workouts on the page.
+     */
     async displayWorkoutPlansOnPage() {
-        const workoutList = this.dataStore.get('workoutList');
+        const workoutplan = this.dataStore.get('workoutplan');
 
-        if (!workoutList) {
-            return;
-            }
-
-        let newList = document.querySelector("newList");
-
-        this.generateList(newList, workoutList);
-        document.getElementById('workoutList').innerText = "";
-
-        if (workoutList.length === 0) {
-            document.getElementById('workoutList').innerText = "(No Workout Plans found...)";
+        if (workoutplan == null) {
+        return;
         }
-    }
+
+        let workoutplanHTML = '';
+        let workouts;
+        for (workouts of workoutplan) {
+            workoutplanHTML += `
+            <li class="workoutplan">
+            <span class="workoutDayName">$(workouts.workoutDayName)</span>
+            </li>
+            `;
+        }
+    document.getElementById('workoutplan').innerHTML = songHtml;
+ }
 }
 
 /**
  * Main method to run when the page contents have loaded.
  */
 const main = async () => {
-    const viewDepartments = new ViewWorkoutPlans();
-    await viewDepartments.mount();
+    const viewWorkoutPlans = new ViewWorkoutPlans();
+    await viewWorkoutPlans.mount();
 };
+
 
 
 window.addEventListener('DOMContentLoaded', main);
