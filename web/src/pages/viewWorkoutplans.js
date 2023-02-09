@@ -69,8 +69,12 @@ class ViewWorkoutPlans extends BindingClass {
 
         if (data.length != 0) {
             for (let element of data) {
-                console.log(element);
+
                 let row = table.insertRow();
+
+                row.addEventListener('click', async evt => {
+                                        window.location.href = `/viewSingleWorkoutPlan.html?id=${element.workoutPlanId}`;
+                                      });
 
                 let cell = row.insertCell();
                 let text = document.createTextNode(element.workoutDayName);

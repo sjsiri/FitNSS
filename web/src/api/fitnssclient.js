@@ -95,8 +95,8 @@ export default class FitNSSClient extends BindingClass {
        */
       async getWorkoutPlan(workoutPlanId, errorCallback) {
           try {
-              const response = await this.client.get(`workoutplan/${workoutPlanId}`);
-              return response.data.singleWorkout;
+              const response = await this.axiosClient.get(`workoutplan/${workoutPlanId}`);
+              return response.data.workoutPlan;
           } catch (error) {
               this.handleError(error, errorCallback)
           }
