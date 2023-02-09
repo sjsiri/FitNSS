@@ -86,6 +86,22 @@ export default class FitNSSClient extends BindingClass {
             }
       }
 
+
+    /**
+       * Gets the workout plan info for the given ID.
+       * @param workoutPlanId Unique identifier for an workout
+       * @param errorCallback (Optional) A function to execute if the call fails.
+       * @returns The workout plan's data.
+       */
+      async getWorkoutPlan(workoutPlanId, errorCallback) {
+          try {
+              const response = await this.client.get(`workoutplan/${workoutPlanId}`);
+              return response.data.singleWorkout;
+          } catch (error) {
+              this.handleError(error, errorCallback)
+          }
+      }
+
     /**
      * Helper method to log the error and run any error functions.
      * @param error The error received from the server.
