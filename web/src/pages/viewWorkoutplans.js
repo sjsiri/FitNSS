@@ -42,6 +42,7 @@ class ViewWorkoutPlans extends BindingClass {
      */
     async displayWorkoutPlansOnPage() {
         const workoutplans = this.dataStore.get('workoutplans');
+        console.log(workoutplans);
 
         if (!workoutplans) {
         return;
@@ -68,7 +69,7 @@ class ViewWorkoutPlans extends BindingClass {
 
         if (data.length != 0) {
             for (let element of data) {
-
+                console.log(element);
                 let row = table.insertRow();
 
                 let cell = row.insertCell();
