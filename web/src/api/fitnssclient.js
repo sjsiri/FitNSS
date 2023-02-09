@@ -102,6 +102,38 @@ export default class FitNSSClient extends BindingClass {
           }
       }
 
+
+    /**
+     * Get all the exercises on the list.
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The list of exercises.
+     */
+
+     async getAllExercises(errorCallback) {
+            try {
+                const response = await this.axiosClient.get(`exercises`);
+                return response.data.exerciseList;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+      }
+
+      /**
+         * Gets the exercise info for the given ID.
+         * @param exerciseId Unique identifier for an workout
+         * @param errorCallback (Optional) A function to execute if the call fails.
+         * @returns The exercise's data.
+         */
+        async getExercise(exerciseId, errorCallback) {
+            try {
+                const response = await this.axiosClient.get(`exercises/${exerciseId}`);
+                return response.data.exercise;
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+        }
+
+
     /**
      * Helper method to log the error and run any error functions.
      * @param error The error received from the server.
