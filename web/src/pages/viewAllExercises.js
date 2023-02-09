@@ -58,7 +58,7 @@ class ViewAllExercises extends BindingClass {
         this.generateTable(table, exerciseList);
         document.getElementById('exerciseList').innerText = "";
 
-        if (workoutplans.length === 0) {
+        if (exerciseList.length === 0) {
             document.getElementById('exerciseList').innerText = "(No Exercises found ..)";
         }
  }
