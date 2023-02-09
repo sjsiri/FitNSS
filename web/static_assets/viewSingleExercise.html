@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <script type="text/javascript" src="assets/viewExerciseDetail.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/allWorkoutPlans.css">
     <title>View Exercise</title>
 </head>
-<body>
 <header class="header" id="header"></header>
-<p>
+<div class="card">
+    <h2>View Exercise</h2>
 <div id="exercise_loading"><span></span></div>
-<div>Exercise ID: </div>
-<div id ="exerciseId"> </div>
-</p>
-<p>
-<div>Exercise Name: </div>
-<div id="exerciseName"> </div>
-</p>
-<p>
-<div> Main Muscle Worked:  </div>
-<div id="workingMuscle"> </div>
-</p>
-<p>
-<div>Movement Group: </div>
-<div id="exerciseMovementGroup"> </div>
-</p>
-
-
-</body>
+<form class="card-content" id="view-exercise-form">
+    <p class="form-field">
+    <div class="div-1" >Exercise ID: </div>
+    <div class="div-2" id ="exerciseId"> </div>
+    </p>
+    <p class="form-field">
+    <div class="div-1">Exercise Name: </div>
+    <div class="div-2" id="exerciseName"> </div>
+    </p>
+    <p class="form-field">
+    <div class="div-1"> Main Muscle Worked:  </div>
+    <div class="div-2" id="workingMuscle"> </div>
+    </p>
+    <p class="form-field">
+    <div class="div-1">Movement Group: </div>
+    <div class="div-2" id="exerciseMovementGroup"> </div>
+    </p>
+</form>
+<button type="button" id="update-exercise">Update Exercise</button>
+</div>
 </html>
