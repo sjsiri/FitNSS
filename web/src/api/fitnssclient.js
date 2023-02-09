@@ -133,6 +133,20 @@ export default class FitNSSClient extends BindingClass {
             }
         }
 
+    /**
+     * Create a new exercise.
+     * @param payload object with exercise data
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The exercise that has been created.
+     */
+    async createExercise(payload, errorCallback) {
+        try {
+            const response = await this.axiosClient.post(`exercises`, payload);
+            return response.data.exercise;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
 
     /**
      * Helper method to log the error and run any error functions.

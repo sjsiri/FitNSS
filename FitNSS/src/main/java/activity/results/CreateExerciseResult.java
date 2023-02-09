@@ -26,15 +26,15 @@ public class CreateExerciseResult {
     }
 
     public static class Builder {
-        private Exercise exer = new Exercise();
+        private Exercise exercise = new Exercise();
 
-        public Builder withExercise(Exercise exer) {
-            this.exer = exer;
+        public Builder withExercise(Exercise exercise) {
+            this.exercise = exercise;
             return this;
         }
 
         public CreateExerciseResult build() {
-            return new CreateExerciseResult(exer);
+            return new CreateExerciseResult(exercise);
         }
 
     }
