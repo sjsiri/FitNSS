@@ -19,8 +19,6 @@ public class WorkoutPlanModel {
 
     private List<String> numberOfWeights;
 
-    private Boolean isCompleted;
-
     private String notesBox;
 
     public WorkoutPlanModel(WorkoutPlan workoutPlan) {
@@ -30,7 +28,6 @@ public class WorkoutPlanModel {
         this.numberOfSets = workoutPlan.getNumberOfSets();
         this.numberOfReps = workoutPlan.getNumberOfReps();
         this.numberOfWeights = workoutPlan.getNumberOfWeights();
-        this.isCompleted = workoutPlan.getCompleted();
         this.notesBox = workoutPlan.getNotesBox();
     }
 
@@ -59,10 +56,6 @@ public class WorkoutPlanModel {
         return numberOfWeights;
     }
 
-    public Boolean getCompleted() {
-        return isCompleted;
-    }
-
     public String getNotesBox() {
         return notesBox;
     }
@@ -78,13 +71,12 @@ public class WorkoutPlanModel {
                 Objects.equals(numberOfSets, that.numberOfSets) &&
                 Objects.equals(numberOfReps, that.numberOfReps) &&
                 Objects.equals(numberOfWeights, that.numberOfWeights) &&
-                Objects.equals(isCompleted, that.isCompleted) &&
                 Objects.equals(notesBox, that.notesBox);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(workoutPlanId, workoutDayName, exercisesAdded, numberOfSets, numberOfReps, numberOfWeights, isCompleted, notesBox);
+        return Objects.hash(workoutPlanId, workoutDayName, exercisesAdded, numberOfSets, numberOfReps, numberOfWeights, notesBox);
     }
 
     @Override
@@ -96,7 +88,6 @@ public class WorkoutPlanModel {
                 ", numberOfSets=" + numberOfSets +
                 ", numberOfReps=" + numberOfReps +
                 ", numberOfWeights=" + numberOfWeights +
-                ", isCompleted=" + isCompleted +
                 ", notesBox='" + notesBox + '\'' +
                 '}';
     }

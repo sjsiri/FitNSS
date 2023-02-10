@@ -24,4 +24,6 @@ public interface ServiceComponent {
 
     GetAllWorkoutPlanActivity provideGetAllWorkoutPlanActivity();
 
+    CreateWorkoutPlanActivity provideCreateWorkoutPlanActivity();
+
 }
