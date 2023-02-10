@@ -405,6 +405,25 @@ Resources:
           Properties:
             Path: /workoutplan
             Method: get
+  CreateWorkoutPlanLambda:
+    Type: AWS::Serverless::Function
+    Properties:
+      Role: !GetAtt AccessDynamoDBTablesRole.Arn
+      CodeUri: FitNSS
+      Handler: lambda.CreateWorkoutPlanLambda::handleRequest
+      Runtime: java11
+      Architectures:
+        - x86_64
+      MemorySize: 512
+      Environment:
+        Variables:
+          JAVA_TOOL_OPTIONS: -XX:+TieredCompilation -XX:TieredStopAtLevel=1
+      Events:
+        FitNSS:
+          Type: Api
+          Properties:
+            Path: /workoutplan
+            Method: post
 
   #-----------------------------------------------------------------
 

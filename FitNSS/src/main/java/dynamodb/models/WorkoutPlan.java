@@ -17,7 +17,6 @@ public class WorkoutPlan {
     private List<Integer> numberOfSets;
     private List<String> numberOfReps;
     private List<String> numberOfWeights;
-    private Boolean isCompleted;
     private String notesBox;
 
     @DynamoDBHashKey(attributeName = "workoutPlanId")
@@ -74,15 +73,6 @@ public class WorkoutPlan {
         this.numberOfWeights = numberOfWeights;
     }
 
-    @DynamoDBAttribute(attributeName = "isCompleted")
-    public Boolean getCompleted() {
-        return isCompleted;
-    }
-
-    public void setCompleted(Boolean completed) {
-        isCompleted = completed;
-    }
-
     @DynamoDBAttribute(attributeName = "notesBox")
     public String getNotesBox() {
         return notesBox;
@@ -103,13 +93,12 @@ public class WorkoutPlan {
                 Objects.equals(numberOfSets, that.numberOfSets) &&
                 Objects.equals(numberOfReps, that.numberOfReps) &&
                 Objects.equals(numberOfWeights, that.numberOfWeights) &&
-                Objects.equals(isCompleted, that.isCompleted) &&
                 Objects.equals(notesBox, that.notesBox);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(workoutPlanId, workoutDayName, exercisesAdded, numberOfSets, numberOfReps, numberOfWeights, isCompleted, notesBox);
+        return Objects.hash(workoutPlanId, workoutDayName, exercisesAdded, numberOfSets, numberOfReps, numberOfWeights, notesBox);
     }
 
     @Override
@@ -121,7 +110,6 @@ public class WorkoutPlan {
                 ", numberOfSets=" + numberOfSets +
                 ", numberOfReps=" + numberOfReps +
                 ", numberOfWeights=" + numberOfWeights +
-                ", isCompleted=" + isCompleted +
                 ", notesBox='" + notesBox + '\'' +
                 '}';
     }
