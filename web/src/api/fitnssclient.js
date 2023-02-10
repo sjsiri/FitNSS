@@ -15,7 +15,7 @@ export default class FitNSSClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getAllWorkoutPlans'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getAllWorkoutPlans', 'getWorkoutPlan', 'getAllExercises', 'getExercise', 'createExercise', 'updateExercise'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -147,6 +147,16 @@ export default class FitNSSClient extends BindingClass {
             this.handleError(error, errorCallback)
         }
     }
+
+
+    async updateExercise(exercise, errorCallback) {
+         try {
+             const response = await this.axiosClient.put(`exercises/${exercise.exerciseId}`, exercise);
+             return response.data.exerciseModel;
+         } catch (error) {
+             this.handleError(error, errorCallback)
+         }
+     }
 
     /**
      * Helper method to log the error and run any error functions.

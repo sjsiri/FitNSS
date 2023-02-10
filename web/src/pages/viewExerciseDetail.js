@@ -27,10 +27,10 @@ class ViewExerciseDetail extends BindingClass {
 
         const exerciseDetail = await this.client.getExercise(exerciseId);
         this.dataStore.set('exerciseDetail', exerciseDetail);
-       // document.getElementById('update-department').addEventListener('click', async evt => {
-                        // console.log('The element that was clicked was ', deptId);
-                           // window.location.href = `/update_department.html?id=${deptId}`;
-                        //  });
+        document.getElementById('update-exercise').addEventListener('click', async evt => {
+                         console.log('The element that was clicked was ', exerciseId);
+                            window.location.href = `/updateExercise.html?id=${exerciseId}`;
+                          });
 
         document.getElementById('exercise_loading').innerHTML = "";
     }
@@ -46,7 +46,7 @@ class ViewExerciseDetail extends BindingClass {
 
 
  /**
-     * Display workout plan details  on the page.
+     * Display exercise details  on the page.
      */
     displayExerciseDetails() {
         const exerciseDetail = this.dataStore.get('exerciseDetail');
