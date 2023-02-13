@@ -65,13 +65,18 @@ class CreateWorkoutPlan extends BindingClass {
         const numberOfWeights = document.getElementById('numberOfWeights').value;
         const notesBox = document.getElementById('notesBox').value;
 
+        var eList = [exerciseName];
+        var setList = [numberOfSets];
+        var repList = [numberOfReps];
+        var weightList = [numberOfWeights];
+
         let payload = {workoutDayName: workoutDayName}
 
         //payload.exerciseId = exerciseId;
-        payload.exerciseAdded = new Array(exerciseName);
-        payload.numberOfSets = new Array(numberOfSets);
-        payload.numberOfReps = new Array(numberOfReps);
-        payload.numberOfWeights = new Array(numberOfWeights);
+        payload.exercisesAdded = eList;
+        payload.numberOfSets = setList;
+        payload.numberOfReps = repList;
+        payload.numberOfWeights = weightList;
         payload.notesBox = notesBox;
 
         // UNABLE TO DESERIALIZE THINK I HAVE TO MAKE ARRAYLISTS FOR THEM?
