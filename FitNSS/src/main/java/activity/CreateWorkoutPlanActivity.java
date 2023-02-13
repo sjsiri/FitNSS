@@ -28,6 +28,8 @@ public class CreateWorkoutPlanActivity {
         WorkoutPlan workoutPlan = new WorkoutPlan();
         workoutPlan.setWorkoutPlanId(FitNSSserviceUtils.generateExerciseId());
         workoutPlan.setWorkoutDayName(request.getWorkoutDayName());
+        workoutPlan.setUserId(request.getUserId());
+        workoutPlan.setUserName(request.getUserName());
         workoutPlan.setExercisesAdded(request.getExercisesAdded());
         workoutPlan.setNumberOfSets(request.getNumberOfSets());
         workoutPlan.setNumberOfReps(request.getNumberOfReps());
