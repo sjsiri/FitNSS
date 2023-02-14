@@ -1,0 +1,132 @@
+{
+  "WorkoutPlan": [
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "xk8wT"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Squat"
+              },
+              {
+                "S": "Deadlift"
+              },
+              {
+                "S": "Bench Press"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Heavy strength workout"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "5"
+              },
+              {
+                "S": "5"
+              },
+              {
+                "S": "5"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "3"
+              },
+              {
+                "N": "3"
+              },
+              {
+                "N": "3"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "315"
+              },
+              {
+                "S": "365"
+              },
+              {
+                "S": "225"
+              }
+            ]
+          },
+          "userId": {
+            "S": "johndoe123@gmail.com"
+          },
+          "workoutDayName": {
+            "S": "Heavy strength day"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "qy3rM"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Barbell Curl"
+              },
+              {
+                "S": "Skull Crusher"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Arm day"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "10"
+              },
+              {
+                "S": "10"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "50"
+              },
+              {
+                "S": "50"
+              }
+            ]
+          },
+          "userId": {
+            "S": "janedoe456@gmail.com"
+          },
+          "workoutDayName": {
+            "S": "Arm day"
+          }
+        }
+      }
+    }
+  ]
+}

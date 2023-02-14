@@ -1,0 +1,144 @@
+{
+  "WorkoutPlan": [
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "xy23Z"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Deadlifts"
+              },
+              {
+                "S": "Pull-ups"
+              },
+              {
+                "S": "Squats"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Focus on form and control"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "8"
+              },
+              {
+                "S": "6"
+              },
+              {
+                "S": "10"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "3"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "3"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "225"
+              },
+              {
+                "S": "Bodyweight"
+              },
+              {
+                "S": "185"
+              }
+            ]
+          },
+          "userId": {
+            "S": "johndoe@example.com"
+          },
+          "workoutDayName": {
+            "S": "Full Body Strength Training"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "ab78X"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Treadmill run"
+              },
+              {
+                "S": "Chest press machine"
+              },
+              {
+                "S": "Leg curls"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Increase intensity gradually over time"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "12"
+              },
+              {
+                "S": "10"
+              },
+              {
+                "S": "8"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "3"
+              },
+              {
+                "N": "3"
+              },
+              {
+                "N": "3"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "6.0"
+              },
+              {
+                "S": "80"
+              },
+              {
+                "S": "60"
+              }
+            ]
+          },
+          "userId": {
+            "S": "janedoe@example.com"
+          },
+          "workoutDayName": {
+            "S": "Cardio and Resistance Training"
+          }
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,168 @@
+{
+  "WorkoutPlan": [
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "dbL1"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Dumbbell Bench Press"
+              },
+              {
+                "S": "Dumbbell Rows"
+              },
+              {
+                "S": "Dumbbell Flyes"
+              },
+              {
+                "S": "Dumbbell Bicep Curls"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Incorporating dumbbell exercises for a change"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "12"
+              },
+              {
+                "S": "10"
+              },
+              {
+                "S": "8"
+              },
+              {
+                "S": "6"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "35"
+              },
+              {
+                "S": "40"
+              },
+              {
+                "S": "25"
+              },
+              {
+                "S": "20"
+              }
+            ]
+          },
+          "userId": {
+            "S": "johndoe@example.com"
+          },
+          "workoutDayName": {
+            "S": "Dumbbell Workout - Monday"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "dbL2"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Dumbbell Lunges"
+              },
+              {
+                "S": "Dumbbell Step-ups"
+              },
+              {
+                "S": "Dumbbell Squats"
+              },
+              {
+                "S": "Dumbbell Calf Raises"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Leg day with dumbbell exercises"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "12"
+              },
+              {
+                "S": "10"
+              },
+              {
+                "S": "8"
+              },
+              {
+                "S": "6"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "20"
+              },
+              {
+                "S": "25"
+              },
+              {
+                "S": "30"
+              },
+              {
+                "S": "15"
+              }
+            ]
+          },
+          "userId": {
+            "S": "johndoe@example.com"
+          },
+          "workoutDayName": {
+            "S": "Dumbbell Workout - Wednesday"
+          }
+        }
+      }
+    }
+  ]
+}

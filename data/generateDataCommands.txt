@@ -3,3 +3,6 @@ aws dynamodb batch-write-item --request-items file://data/ExerciseData2.json
 aws dynamodb batch-write-item --request-items file://data/ExerciseData3.json
 aws dynamodb batch-write-item --request-items file://data/ExerciseData4.json
 aws dynamodb batch-write-item --request-items file://data/WorkoutPlanData.json
+aws dynamodb batch-write-item --request-items file://data/WorkoutPlanData2.json
+aws dynamodb batch-write-item --request-items file://data/WorkoutPlanData3.json
+aws dynamodb batch-write-item --request-items file://data/WorkoutPlanData4.json
