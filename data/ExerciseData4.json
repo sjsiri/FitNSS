@@ -1,0 +1,166 @@
+{
+  "Exercises": [
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc011"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Barbell Hip Thrusts"
+          },
+          "workingMuscle": {
+            "S": "Glutes"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc012"
+          },
+          "exerciseMovementGroup": {
+            "S": "Upper"
+          },
+          "exerciseName": {
+            "S": "Dumbbell Rows"
+          },
+          "workingMuscle": {
+            "S": "Back"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc013"
+          },
+          "exerciseMovementGroup": {
+            "S": "Core"
+          },
+          "exerciseName": {
+            "S": "Hanging Leg Raises"
+          },
+          "workingMuscle": {
+            "S": "Abdominals"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc014"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Bulgarian Split Squats"
+          },
+          "workingMuscle": {
+            "S": "Quadriceps"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc015"
+          },
+          "exerciseMovementGroup": {
+            "S": "Upper"
+          },
+          "exerciseName": {
+            "S": "Chin-Ups"
+          },
+          "workingMuscle": {
+            "S": "Back"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc016"
+          },
+          "exerciseMovementGroup": {
+            "S": "Core"
+          },
+          "exerciseName": {
+            "S": "Cable Woodchops"
+          },
+          "workingMuscle": {
+            "S": "Obliques"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc017"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Leg Press"
+          },
+          "workingMuscle": {
+            "S": "Quadriceps"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc018"
+          },
+          "exerciseMovementGroup": {
+            "S": "Upper"
+          },
+          "exerciseName": {
+            "S": "Incline Bench Press"
+          },
+          "workingMuscle": {
+            "S": "Chest"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc019"
+          },
+          "exerciseMovementGroup": {
+            "S": "Core"
+          },
+          "exerciseName": {
+            "S": "Ab Wheel Rollouts"
+          },
+          "workingMuscle": {
+            "S": "Abdominals"
+          }
+        }
+      }
+    }
+  ]
+}

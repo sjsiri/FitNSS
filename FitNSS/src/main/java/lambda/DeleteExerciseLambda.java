@@ -12,7 +12,11 @@ import static utils.NullUtils.ifNull;
 public class DeleteExerciseLambda extends LambdaActivityRunner<DeleteExerciseRequest, DeleteExerciseResult>
     implements RequestHandler<LambdaRequest<DeleteExerciseRequest>, LambdaResponse> {
 
-
+    /**
+     * @param input   The Lambda Function input
+     * @param context The Lambda execution environment context object.
+     * @return a LambdaResponse
+     */
     @Override
     public LambdaResponse handleRequest(LambdaRequest<DeleteExerciseRequest> input, Context context) {
         return super.runActivity(

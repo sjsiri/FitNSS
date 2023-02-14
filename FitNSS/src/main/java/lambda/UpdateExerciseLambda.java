@@ -13,6 +13,11 @@ public class UpdateExerciseLambda
         extends LambdaActivityRunner<UpdateExerciseRequest, UpdateExerciseResult>
         implements RequestHandler<LambdaRequest<UpdateExerciseRequest>, LambdaResponse> {
 
+    /**
+     * @param input   The Lambda Function input
+     * @param context The Lambda execution environment context object.
+     * @return a LambdaResponse
+     */
     @Override
     public LambdaResponse handleRequest(LambdaRequest<UpdateExerciseRequest> input, Context context) {
         return super.runActivity(

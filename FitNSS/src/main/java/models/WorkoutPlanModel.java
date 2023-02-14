@@ -5,6 +5,9 @@ import dynamodb.models.WorkoutPlan;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * WorkoutPlanModel that is the public API model for FitNSS.
+ */
 public class WorkoutPlanModel {
 
     private String workoutPlanId;

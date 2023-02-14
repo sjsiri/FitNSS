@@ -1,0 +1,5 @@
+aws dynamodb batch-write-item --request-items file://data/ExerciseData.json
+aws dynamodb batch-write-item --request-items file://data/ExerciseData2.json
+aws dynamodb batch-write-item --request-items file://data/ExerciseData3.json
+aws dynamodb batch-write-item --request-items file://data/ExerciseData4.json
+aws dynamodb batch-write-item --request-items file://data/WorkoutPlanData.json

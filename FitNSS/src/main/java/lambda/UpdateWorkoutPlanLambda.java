@@ -9,6 +9,11 @@ public class UpdateWorkoutPlanLambda
         extends LambdaActivityRunner<UpdateWorkoutPlanRequest, UpdateWorkoutPlanResult>
         implements RequestHandler<AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest>, LambdaResponse> {
 
+    /**
+     * @param input   The Lambda Function input
+     * @param context The Lambda execution environment context object.
+     * @return a LambdaResponse
+     */
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest> input, Context context) {
         return super.runActivity(

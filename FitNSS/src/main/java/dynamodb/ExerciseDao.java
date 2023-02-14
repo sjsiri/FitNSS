@@ -52,6 +52,11 @@ public class ExerciseDao {
         return dynamoDBMapper.scan(Exercise.class, scanExpression);
     }
 
+    /**
+     * Returns the {@link Exercise} *
+     * @param exerciseMovementGroup the exerciseMovementGroup
+     * @return the stored Exercises.
+     */
     public List<Exercise> getAllExercisesByMovementGroup(String exerciseMovementGroup) {
         Map<String, AttributeValue> valueMap = new HashMap<>();
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
@@ -85,6 +90,11 @@ public class ExerciseDao {
         }
     }
 
+    /**
+     * Returns the {@link Exercise} *
+     * @param workingMuscle the workingMuscle
+     * @return the stored Exercises.
+     */
     public List<Exercise> getAllExercisesByMuscle(String workingMuscle) {
         Map<String, AttributeValue> valueMap = new HashMap<>();
         DynamoDBScanExpression scanExpression = new DynamoDBScanExpression();
@@ -159,6 +169,11 @@ public class ExerciseDao {
         this.dynamoDBMapper.save(exercise);
     }
 
+    /**
+     * Deletes the workout.
+     *
+     * @param exercise The workout to delete
+     */
     public void deleteExercise(Exercise exercise) {
         exercise.setExerciseId(exercise.getExerciseId());
         this.dynamoDBMapper.delete(exercise);
