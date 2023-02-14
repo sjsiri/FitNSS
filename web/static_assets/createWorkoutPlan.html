@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script type="text/javascript" src="assets/createWorkoutPlan.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>FitNSS Create Workout Plan</title>
+</head>
+<header class="header" id="header"></header>
+<body>
+<div class="card">
+    <h2>Create Workout Plan </h2>
+    <form class="card-content" id="create-workoutplan-form">
+        <p class="form-field">
+            <label class="required">Workout Plan Name</label>
+            <input type="text" required id="workoutDayName">
+        </p>
+        <p class="form-field">
+            <label>Exercises List</label>
+            <select id="exercisesList">
+                <option>-- Select Exercises --</option>
+            </select>
+        </p>
+        <p class="form-field">
+            <label>Number Of Sets</label>
+            <input type="numberOfSets" id="numberOfSets">
+        </p>
+        <p class="form-field">
+            <label>Number Of Reps</label>
+            <input type="numberOfReps" id="numberOfReps">
+        </p>
+        <p class="form-field">
+            <label>Number of Weights</label>
+            <input type="numberOfWeights" id="numberOfWeights">
+        </p>
+        <p class="form-field">
+            <label>Notes</label>
+            <input type="notesBox" id="notesBox">
+        </p>
+    </form>
+    <button type="button" id="save-workoutplan">Save Workout Plan</button>
+</div>
+</body>
+</html>
