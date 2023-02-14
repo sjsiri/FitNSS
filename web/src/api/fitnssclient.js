@@ -15,7 +15,7 @@ export default class FitNSSClient extends BindingClass {
     constructor(props = {}) {
         super();
 
-        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getAllWorkoutPlans', 'getWorkoutPlan', 'getAllExercises', 'getExercise', 'createExercise', 'updateExercise'];
+        const methodsToBind = ['clientLoaded', 'getIdentity', 'login', 'logout', 'getAllWorkoutPlans', 'getWorkoutPlan', 'getAllExercises', 'getExercise', 'createExercise', 'updateExercise', 'createWorkoutPlan'];
         this.bindClassMethods(methodsToBind, this);
 
         this.authenticator = new Authenticator();;
@@ -157,6 +157,28 @@ export default class FitNSSClient extends BindingClass {
              this.handleError(error, errorCallback)
          }
      }
+
+     /**
+       * Create a new workout plan.
+       * @param payload object with workout plan data
+       * @param errorCallback (Optional) A function to execute if the call fails.
+       * @returns The workout plan that has been created.
+       */
+      async createWorkoutPlan(payload, errorCallback) {
+          try {
+              const token = await this.getTokenOrThrow("Only authenticated users can create workout plans.");
+              const identity = await this.getIdentity();
+              const response = await this.axiosClient.post(`workoutplan`, payload,
+              {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+              });
+              return response.data.workoutPlan;
+          } catch (error) {
+              this.handleError(error, errorCallback)
+          }
+      }
 
     /**
      * Helper method to log the error and run any error functions.

@@ -1,20 +1,22 @@
 package lambda;
 
-import activity.requests.CreateWorkoutPlanRequest;
-import activity.results.CreateWorkoutPlanResult;
+import activity.requests.UpdateWorkoutPlanRequest;
+import activity.results.UpdateWorkoutPlanResult;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
-public class CreateWorkoutPlanLambda extends LambdaActivityRunner<CreateWorkoutPlanRequest, CreateWorkoutPlanResult>
-    implements RequestHandler<AuthenticatedLambdaRequest<CreateWorkoutPlanRequest>, LambdaResponse> {
+public class UpdateWorkoutPlanLambda
+        extends LambdaActivityRunner<UpdateWorkoutPlanRequest, UpdateWorkoutPlanResult>
+        implements RequestHandler<AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest>, LambdaResponse> {
 
     @Override
-    public LambdaResponse handleRequest(AuthenticatedLambdaRequest<CreateWorkoutPlanRequest> input, Context context) {
+    public LambdaResponse handleRequest(AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest> input, Context context) {
         return super.runActivity(
                 () -> {
-                    CreateWorkoutPlanRequest unauthenticatedRequest = input.fromBody(CreateWorkoutPlanRequest.class);
+                    UpdateWorkoutPlanRequest unauthenticatedRequest = input.fromBody(UpdateWorkoutPlanRequest.class);
                     return input.fromUserClaims(claims ->
-                            CreateWorkoutPlanRequest.builder()
+                            UpdateWorkoutPlanRequest.builder()
+                                    .withWorkoutPlanId(unauthenticatedRequest.getWorkoutPlanId())
                                     .withWorkoutDayName(unauthenticatedRequest.getWorkoutDayName())
                                     .withExercisesAdded(unauthenticatedRequest.getExercisesAdded())
                                     .withNumberOfSets(unauthenticatedRequest.getNumberOfSets())
@@ -24,7 +26,7 @@ public class CreateWorkoutPlanLambda extends LambdaActivityRunner<CreateWorkoutP
                                     .withUserId(claims.get("email"))
                                     .build());
                 },
-                (request, serviceComponent) -> serviceComponent.provideCreateWorkoutPlanActivity().handleRequest(request)
+                (request, serviceComponent) -> serviceComponent.provideUpdateWorkoutPlanActivity().handleRequest(request)
         );
     }
 }

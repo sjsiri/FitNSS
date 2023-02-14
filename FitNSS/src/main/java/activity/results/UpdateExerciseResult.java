@@ -22,7 +22,7 @@ public class UpdateExerciseResult {
                 '}';
     }
 
-    //ChECKSTYLE:OFF:Builder
+    //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
     }

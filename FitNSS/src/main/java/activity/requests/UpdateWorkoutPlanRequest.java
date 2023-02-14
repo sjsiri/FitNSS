@@ -5,29 +5,30 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
 import java.util.List;
 
-@JsonDeserialize(builder = CreateWorkoutPlanRequest.Builder.class)
-public class CreateWorkoutPlanRequest {
+@JsonDeserialize(builder = UpdateWorkoutPlanRequest.Builder.class)
+public class UpdateWorkoutPlanRequest {
 
-    private final String workoutPlanId;
+    private String workoutPlanId;
 
-    private final String workoutDayName;
+    private String workoutDayName;
 
-    private final List<String> exercisesAdded;
+    private List<String> exercisesAdded;
 
-    private final List<Integer> numberOfSets;
+    private List<Integer> numberOfSets;
 
-    private final List<String> numberOfReps;
+    private List<String> numberOfReps;
 
-    private final List<String> numberOfWeights;
+    private List<String> numberOfWeights;
 
-    private final String notesBox;
+    private String notesBox;
 
-    private final String userId;
+    private String userId;
 
 
-    public CreateWorkoutPlanRequest(String workoutPlanId, String workoutDayName, List<String> exercisesAdded,
-                                    List<Integer> numberOfSets, List<String> numberOfReps,
-                                    List<String> numberOfWeights, String notesBox, String userId) {
+    public UpdateWorkoutPlanRequest(String workoutPlanId, String workoutDayName,
+                                    List<String> exercisesAdded, List<Integer> numberOfSets,
+                                    List<String> numberOfReps, List<String> numberOfWeights,
+                                    String notesBox, String userId) {
         this.workoutPlanId = workoutPlanId;
         this.workoutDayName = workoutDayName;
         this.exercisesAdded = exercisesAdded;
@@ -65,16 +66,15 @@ public class CreateWorkoutPlanRequest {
     public String getNotesBox() {
         return notesBox;
     }
-
     public String getUserId() {
         return userId;
     }
 
-
     @Override
     public String toString() {
-        return "CreateWorkoutPlanRequest{" +
+        return "UpdateWorkoutPlanRequest{" +
                 "workoutPlanId='" + workoutPlanId + '\'' +
+                ", pathWorkoutPlanId='" +
                 ", workoutDayName='" + workoutDayName + '\'' +
                 ", exercisesAdded=" + exercisesAdded +
                 ", numberOfSets=" + numberOfSets +
@@ -100,7 +100,7 @@ public class CreateWorkoutPlanRequest {
 
         private List<String> exercisesAdded;
 
-        private  List<Integer> numberOfSets;
+        private List<Integer> numberOfSets;
 
         private List<String> numberOfReps;
 
@@ -151,17 +151,10 @@ public class CreateWorkoutPlanRequest {
         }
 
 
-        public CreateWorkoutPlanRequest build() {
-            return new CreateWorkoutPlanRequest(
-                    workoutPlanId,
-                    workoutDayName,
-                    exercisesAdded,
-                    numberOfSets,
-                    numberOfReps,
-                    numberOfWeights,
-                    notesBox,
-                    userId);
-
+        public UpdateWorkoutPlanRequest build() {
+            return new UpdateWorkoutPlanRequest(workoutPlanId, workoutDayName, exercisesAdded,
+                    numberOfSets, numberOfReps, numberOfWeights, notesBox, userId);
         }
+
     }
 }

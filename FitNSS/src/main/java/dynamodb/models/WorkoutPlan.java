@@ -19,6 +19,8 @@ public class WorkoutPlan {
     private List<String> numberOfWeights;
     private String notesBox;
 
+    private String userId;
+
     @DynamoDBHashKey(attributeName = "workoutPlanId")
     public String getWorkoutPlanId() {
         return workoutPlanId;
@@ -81,6 +83,18 @@ public class WorkoutPlan {
     public void setNotesBox(String notesBox) {
         this.notesBox = notesBox;
     }
+
+    @DynamoDBAttribute(attributeName = "userId")
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+
+
 
     @Override
     public boolean equals(Object o) {
