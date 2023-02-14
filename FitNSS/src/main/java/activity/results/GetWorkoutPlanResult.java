@@ -7,6 +7,11 @@ public class GetWorkoutPlanResult {
 
     private final WorkoutPlanModel workoutPlan;
 
+    /**
+     * Instantiates a new GetWorkoutPlan object.
+     *
+     * @param workoutPlan workoutPlan to access the WorkoutPlan table.
+     */
     public GetWorkoutPlanResult(WorkoutPlan workoutPlan) {
         this.workoutPlan = new WorkoutPlanModel(workoutPlan);
     }

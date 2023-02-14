@@ -7,6 +7,11 @@ public class CreateWorkoutPlanResult {
 
     private final WorkoutPlan workoutPlan;
 
+    /**
+     * Constructs results.
+     *
+     * @param workoutPlan the WorkoutPlan to be created.
+     */
     public CreateWorkoutPlanResult(WorkoutPlan workoutPlan) {
         this.workoutPlan = workoutPlan;
     }

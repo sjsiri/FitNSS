@@ -3,6 +3,7 @@ package activity;
 import activity.requests.UpdateWorkoutPlanRequest;
 import activity.results.UpdateWorkoutPlanResult;
 import dynamodb.WorkoutPlanDao;
+import dynamodb.models.Exercise;
 import dynamodb.models.WorkoutPlan;
 import exceptions.WorkoutPlanNotFoundException;
 import models.WorkoutPlanModel;
@@ -14,12 +15,25 @@ import javax.inject.Inject;
 public class UpdateWorkoutPlanActivity {
     private final Logger log = LogManager.getLogger();
     private final WorkoutPlanDao workoutPlanDao;
-
+    /**
+     * Instantiates a new UpdateWorkoutPlanActivity object.
+     *
+     * @param workoutPlanDao  WorkoutPlanDao to access the workoutPlan table.
+     */
     @Inject
     public UpdateWorkoutPlanActivity(WorkoutPlanDao workoutPlanDao) {
         this.workoutPlanDao = workoutPlanDao;
     }
 
+    /**
+     * This method handles the incoming request by retrieving the workout plan, updating it,
+     * and persisting the workout plan.
+     * <p>
+     * It then returns the updated workout plan.
+     *
+     * @param updateWorkoutPlanRequest request object.
+     * @return updateWorkoutPlanResult result object containing the API defined {@link WorkoutPlan}
+     */
     public UpdateWorkoutPlanResult handleRequest(final UpdateWorkoutPlanRequest updateWorkoutPlanRequest) {
         log.info("Received UpdateWorkoutPlanRequest {}", updateWorkoutPlanRequest);
 
