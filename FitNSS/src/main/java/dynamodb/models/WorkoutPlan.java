@@ -21,8 +21,6 @@ public class WorkoutPlan {
 
     private String userId;
 
-    private String userName;
-
     @DynamoDBHashKey(attributeName = "workoutPlanId")
     public String getWorkoutPlanId() {
         return workoutPlanId;
@@ -95,14 +93,7 @@ public class WorkoutPlan {
         this.userId = userId;
     }
 
-    @DynamoDBAttribute(attributeName = "userName")
-    public String getUserName() {
-        return userName;
-    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
 
 
     @Override

@@ -21,8 +21,7 @@ public class CreateWorkoutPlanLambda extends LambdaActivityRunner<CreateWorkoutP
                                     .withNumberOfReps(unauthenticatedRequest.getNumberOfReps())
                                     .withNumberOfWeights(unauthenticatedRequest.getNumberOfWeights())
                                     .withNotesBox(unauthenticatedRequest.getNotesBox())
-                                    .withUserId(claims.get("userId"))
-                                    .withUserName(claims.get("userName"))
+                                    .withUserId(claims.get("email"))
                                     .build());
                 },
                 (request, serviceComponent) -> serviceComponent.provideCreateWorkoutPlanActivity().handleRequest(request)

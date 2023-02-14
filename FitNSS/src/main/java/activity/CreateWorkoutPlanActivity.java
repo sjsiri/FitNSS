@@ -25,11 +25,12 @@ public class CreateWorkoutPlanActivity {
     public CreateWorkoutPlanResult handleRequest(CreateWorkoutPlanRequest request) {
         log.info("Received Create Workout Plan Request {}", request);
 
+        String userId = request.getUserId();
+
         WorkoutPlan workoutPlan = new WorkoutPlan();
         workoutPlan.setWorkoutPlanId(FitNSSserviceUtils.generateExerciseId());
         workoutPlan.setWorkoutDayName(request.getWorkoutDayName());
         workoutPlan.setUserId(request.getUserId());
-        workoutPlan.setUserName(request.getUserName());
         workoutPlan.setExercisesAdded(request.getExercisesAdded());
         workoutPlan.setNumberOfSets(request.getNumberOfSets());
         workoutPlan.setNumberOfReps(request.getNumberOfReps());

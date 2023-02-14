@@ -18,7 +18,12 @@ public class UpdateWorkoutPlanLambda
                             UpdateWorkoutPlanRequest.builder()
                                     .withWorkoutPlanId(unauthenticatedRequest.getWorkoutPlanId())
                                     .withWorkoutDayName(unauthenticatedRequest.getWorkoutDayName())
-                                    .withUserId(claims.get("userId"))
+                                    .withExercisesAdded(unauthenticatedRequest.getExercisesAdded())
+                                    .withNumberOfSets(unauthenticatedRequest.getNumberOfSets())
+                                    .withNumberOfReps(unauthenticatedRequest.getNumberOfReps())
+                                    .withNumberOfWeights(unauthenticatedRequest.getNumberOfWeights())
+                                    .withNotesBox(unauthenticatedRequest.getNotesBox())
+                                    .withUserId(claims.get("email"))
                                     .build());
                 },
                 (request, serviceComponent) -> serviceComponent.provideUpdateWorkoutPlanActivity().handleRequest(request)

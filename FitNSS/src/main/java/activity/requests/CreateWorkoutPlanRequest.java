@@ -24,12 +24,10 @@ public class CreateWorkoutPlanRequest {
 
     private final String userId;
 
-    private final String userName;
-
 
     public CreateWorkoutPlanRequest(String workoutPlanId, String workoutDayName, List<String> exercisesAdded,
                                     List<Integer> numberOfSets, List<String> numberOfReps,
-                                    List<String> numberOfWeights, String notesBox, String userId, String userName) {
+                                    List<String> numberOfWeights, String notesBox, String userId) {
         this.workoutPlanId = workoutPlanId;
         this.workoutDayName = workoutDayName;
         this.exercisesAdded = exercisesAdded;
@@ -38,7 +36,6 @@ public class CreateWorkoutPlanRequest {
         this.numberOfWeights = numberOfWeights;
         this.notesBox = notesBox;
         this.userId = userId;
-        this.userName = userName;
     }
 
     public String getWorkoutPlanId() {
@@ -73,10 +70,6 @@ public class CreateWorkoutPlanRequest {
         return userId;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
 
     @Override
     public String toString() {
@@ -89,7 +82,7 @@ public class CreateWorkoutPlanRequest {
                 ", numberOfWeights=" + numberOfWeights +
                 ", notesBox='" + notesBox + '\'' +
                 ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + '\'' +
                 '}';
     }
 
@@ -116,8 +109,6 @@ public class CreateWorkoutPlanRequest {
         private String notesBox;
 
         private String userId;
-
-        private String userName;
 
         public Builder withWorkoutPlanId(String workoutPlanId) {
             this.workoutPlanId = workoutPlanId;
@@ -159,10 +150,6 @@ public class CreateWorkoutPlanRequest {
             return this;
         }
 
-        public Builder withUserName(String userName) {
-            this.userName = userName;
-            return this;
-        }
 
         public CreateWorkoutPlanRequest build() {
             return new CreateWorkoutPlanRequest(
@@ -173,7 +160,7 @@ public class CreateWorkoutPlanRequest {
                     numberOfReps,
                     numberOfWeights,
                     notesBox,
-                    userId, userName);
+                    userId);
 
         }
     }

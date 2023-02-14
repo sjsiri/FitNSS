@@ -24,13 +24,11 @@ public class UpdateWorkoutPlanRequest {
 
     private String userId;
 
-    private String userName;
-
 
     public UpdateWorkoutPlanRequest(String workoutPlanId, String workoutDayName,
                                     List<String> exercisesAdded, List<Integer> numberOfSets,
                                     List<String> numberOfReps, List<String> numberOfWeights,
-                                    String notesBox, String userId, String userName) {
+                                    String notesBox, String userId) {
         this.workoutPlanId = workoutPlanId;
         this.workoutDayName = workoutDayName;
         this.exercisesAdded = exercisesAdded;
@@ -39,7 +37,6 @@ public class UpdateWorkoutPlanRequest {
         this.numberOfWeights = numberOfWeights;
         this.notesBox = notesBox;
         this.userId = userId;
-        this.userName = userName;
     }
 
     public String getWorkoutPlanId() {
@@ -69,13 +66,8 @@ public class UpdateWorkoutPlanRequest {
     public String getNotesBox() {
         return notesBox;
     }
-
     public String getUserId() {
         return userId;
-    }
-
-    public String getUserName() {
-        return userName;
     }
 
     @Override
@@ -90,7 +82,7 @@ public class UpdateWorkoutPlanRequest {
                 ", numberOfWeights=" + numberOfWeights +
                 ", notesBox='" + notesBox + '\'' +
                 ", userId='" + userId + '\'' +
-                ", userName='" + userName + '\'' +
+                ", userName='" + '\'' +
                 '}';
     }
 
@@ -117,8 +109,6 @@ public class UpdateWorkoutPlanRequest {
         private String notesBox;
 
         private String userId;
-
-        private String userName;
 
         public Builder withWorkoutPlanId(String workoutPlanId) {
             this.workoutPlanId = workoutPlanId;
@@ -160,14 +150,10 @@ public class UpdateWorkoutPlanRequest {
             return this;
         }
 
-        public Builder withUserName(String userName) {
-            this.userName = userName;
-            return this;
-        }
 
         public UpdateWorkoutPlanRequest build() {
             return new UpdateWorkoutPlanRequest(workoutPlanId, workoutDayName, exercisesAdded,
-                    numberOfSets, numberOfReps, numberOfWeights, notesBox, userId, userName);
+                    numberOfSets, numberOfReps, numberOfWeights, notesBox, userId);
         }
 
     }

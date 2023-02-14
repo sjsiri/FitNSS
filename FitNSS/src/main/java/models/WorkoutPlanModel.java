@@ -23,8 +23,6 @@ public class WorkoutPlanModel {
 
     private String userId;
 
-    private String userName;
-
     public WorkoutPlanModel(WorkoutPlan workoutPlan) {
         this.workoutPlanId = workoutPlan.getWorkoutPlanId();
         this.workoutDayName = workoutPlan.getWorkoutDayName();
@@ -34,7 +32,6 @@ public class WorkoutPlanModel {
         this.numberOfWeights = workoutPlan.getNumberOfWeights();
         this.notesBox = workoutPlan.getNotesBox();
         this.userId = workoutPlan.getUserId();
-        this.userName = workoutPlan.getUserName();
     }
 
 
@@ -71,10 +68,6 @@ public class WorkoutPlanModel {
         return userId;
     }
 
-    public String getUserName() {
-        return userName;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -83,13 +76,13 @@ public class WorkoutPlanModel {
         return Objects.equals(workoutPlanId, that.workoutPlanId) && Objects.equals(workoutDayName, that.workoutDayName) &&
                 Objects.equals(exercisesAdded, that.exercisesAdded) && Objects.equals(numberOfSets, that.numberOfSets) &&
                 Objects.equals(numberOfReps, that.numberOfReps) && Objects.equals(numberOfWeights, that.numberOfWeights) &&
-                Objects.equals(notesBox, that.notesBox) && Objects.equals(userId, that.userId) && Objects.equals(userName, that.userName);
+                Objects.equals(notesBox, that.notesBox) && Objects.equals(userId, that.userId);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(workoutPlanId, workoutDayName, exercisesAdded, numberOfSets,
-                numberOfReps, numberOfWeights, notesBox, userId, userName);
+                numberOfReps, numberOfWeights, notesBox, userId);
     }
 
     @Override
