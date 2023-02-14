@@ -1,3 +1,5 @@
+package activity;
+
 import activity.UpdateWorkoutPlanActivity;
 import activity.requests.UpdateWorkoutPlanRequest;
 import activity.results.UpdateWorkoutPlanResult;

@@ -1,3 +1,5 @@
+package activity;
+
 import activity.DeleteExerciseActivity;
 import activity.requests.DeleteExerciseRequest;
 import dynamodb.ExerciseDao;
