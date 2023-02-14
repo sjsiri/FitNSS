@@ -7,6 +7,11 @@ public class UpdateWorkoutPlanResult {
 
     private final WorkoutPlanModel workoutPlanModel;
 
+    /**
+     * Constructs results.
+     *
+     * @param workoutPlanModel the workoutplan to be updated.
+     */
     public UpdateWorkoutPlanResult(WorkoutPlanModel workoutPlanModel) {
         this.workoutPlanModel = workoutPlanModel;
     }

@@ -18,11 +18,25 @@ public class UpdateExerciseActivity {
 
     private final ExerciseDao exerciseDao;
 
+    /**
+     * Instantiates a new UpdateExerciseActivity object.
+     *
+     * @param exerciseDao  ExerciseDao to access the exercise table.
+     */
     @Inject
     public UpdateExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
     }
 
+    /**
+     * This method handles the incoming request by retrieving the exercise, updating it,
+     * and persisting the exercise.
+     * <p>
+     * It then returns the updated exercise.
+     *
+     * @param updateExerciseRequest request object containing the exerciseId, exerciseName, exerciseMovementGroup, workingMuscle.
+     * @return updateExerciseResult result object containing the API defined {@link Exercise}
+     */
     public UpdateExerciseResult handleRequest(final UpdateExerciseRequest updateExerciseRequest) {
         log.info("Received UpdateExerciseRequest {}", updateExerciseRequest);
 

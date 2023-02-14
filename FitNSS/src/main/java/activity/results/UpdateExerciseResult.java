@@ -6,7 +6,11 @@ import models.ExerciseModel;
 public class UpdateExerciseResult {
     private final ExerciseModel exerciseModel;
 
-
+    /**
+     * Constructs results.
+     *
+     * @param exerciseModel the exercise to be updated.
+     */
     public UpdateExerciseResult(ExerciseModel exerciseModel) {
         this.exerciseModel = exerciseModel;
     }

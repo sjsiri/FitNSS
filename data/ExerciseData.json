@@ -1,0 +1,50 @@
+{
+  "Exercises": [
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {"S":"abc001"},
+          "exerciseMovementGroup":{"S":"Lower"},
+          "exerciseName": {"S": "Romanian Deadlifts"},
+          "workingMuscle": {"S": "Hamstring"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc002"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Squats"
+          },
+          "workingMuscle": {
+            "S": "Quadriceps"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc003"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Good Mornings"
+          },
+          "workingMuscle": {
+            "S": "Hamstring"
+          }
+        }
+      }
+    }
+    ]
+}

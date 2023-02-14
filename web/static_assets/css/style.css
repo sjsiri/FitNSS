@@ -224,3 +224,48 @@ a {
   font-size: 40px;
 }
 
+table {
+  font-family: sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  color: var(--tertiary-color);
+  background-color: #ffffff;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #dddddd;;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  background-color: var(--primary-color);;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+

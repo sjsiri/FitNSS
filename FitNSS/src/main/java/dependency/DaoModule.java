@@ -7,18 +7,23 @@ import dagger.Module;
 import dagger.Provides;
 
 import javax.inject.Singleton;
+
+/**
+ * Dagger Module providing dependencies for DAO classes.
+ */
 @Module
 public class DaoModule {
-
-
-@Singleton
-@Provides
+    /**
+     * Provides a DynamoDBMapper singleton instance.
+     *
+     * @return DynamoDBMapper object
+     */
+    @Singleton
+    @Provides
     public DynamoDBMapper provideDynamoDBMapper() {
         return new DynamoDBMapper(DynamoDbClientProvider.getDynamoDBClient(),
             DynamoDBMapperConfig.builder()
             .withSaveBehavior(DynamoDBMapperConfig.SaveBehavior.UPDATE_SKIP_NULL_ATTRIBUTES)
             .build());
-
-}
-
+    }
 }

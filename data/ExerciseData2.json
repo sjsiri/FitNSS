@@ -1,0 +1,50 @@
+{
+  "Exercises": [
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {"S":"abc004"},
+          "exerciseMovementGroup":{"S":"Upper"},
+          "exerciseName": {"S": "Bench Press"},
+          "workingMuscle": {"S": "Chest"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc005"
+          },
+          "exerciseMovementGroup": {
+            "S": "Upper"
+          },
+          "exerciseName": {
+            "S": "Pull-Ups"
+          },
+          "workingMuscle": {
+            "S": "Back"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc006"
+          },
+          "exerciseMovementGroup": {
+            "S": "Core"
+          },
+          "exerciseName": {
+            "S": "Plank"
+          },
+          "workingMuscle": {
+            "S": "Abdominals"
+          }
+        }
+      }
+    }
+  ]
+}

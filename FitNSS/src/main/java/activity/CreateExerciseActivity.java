@@ -15,12 +15,25 @@ public class CreateExerciseActivity {
 
     private final ExerciseDao exerciseDao;
 
+    /**
+     * Instantiates a new CreateExerciseActivity object.
+     *
+     * @param exerciseDao ExerciseDao to access the exercise table.
+     */
     @Inject
     public CreateExerciseActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
         log = LogManager.getLogger();
     }
 
+    /**
+     * This method handles the incoming request by creating a exercise in the database.
+     * <p>
+     * It then returns the exercise.
+     * <p>
+     * @param request request object containing the exercise's information
+     * @return CreateExerciseResult result object containing the API defined {@link Exercise}
+     */
     public CreateExerciseResult handleRequest(CreateExerciseRequest request) {
         log.info("Received Create Exercise Request {}", request);
 

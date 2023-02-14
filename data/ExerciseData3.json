@@ -1,0 +1,68 @@
+{
+  "Exercises": [
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {"S":"abc007"},
+          "exerciseMovementGroup":{"S":"Lower"},
+          "exerciseName": {"S": "Lunges"},
+          "workingMuscle": {"S": "Quadriceps"}
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc008"
+          },
+          "exerciseMovementGroup": {
+            "S": "Upper"
+          },
+          "exerciseName": {
+            "S": "Military Press"
+          },
+          "workingMuscle": {
+            "S": "Shoulders"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc009"
+          },
+          "exerciseMovementGroup": {
+            "S": "Core"
+          },
+          "exerciseName": {
+            "S": "Russian Twists"
+          },
+          "workingMuscle": {
+            "S": "Obliques"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "exerciseId": {
+            "S": "abc010"
+          },
+          "exerciseMovementGroup": {
+            "S": "Lower"
+          },
+          "exerciseName": {
+            "S": "Box Jumps"
+          },
+          "workingMuscle": {
+            "S": "Quadriceps"
+          }
+        }
+      }
+    }
+  ]
+}

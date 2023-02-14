@@ -5,6 +5,11 @@ import dynamodb.models.Exercise;
 public class CreateExerciseResult {
     private final Exercise exercise;
 
+    /**
+     * Constructs results.
+     *
+     * @param exercise the exercise to be created.
+     */
     public CreateExerciseResult(Exercise exercise) {
         this.exercise = exercise;
     }

@@ -1,5 +1,8 @@
 package metrics;
 
+/**
+ * Constant values for use with metrics.
+ */
 public class MetricsConstants {
     public static final String GETEXERCISE_EXERCISENOTFOUND_COUNT = "GetExercise.ExerciseNotFoundException.Count";
     public static final String UPDATEEXERCISE_INVALIDATTRIBUTEVALUE_COUNT =

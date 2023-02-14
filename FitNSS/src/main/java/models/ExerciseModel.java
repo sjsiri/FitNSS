@@ -4,6 +4,9 @@ import dynamodb.models.Exercise;
 
 import java.util.Objects;
 
+/**
+ * ExerciseModel that is the public API model for FitNSS.
+ */
 public class ExerciseModel {
 
     private String exerciseId;

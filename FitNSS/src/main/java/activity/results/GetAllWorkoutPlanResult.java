@@ -10,6 +10,11 @@ public class GetAllWorkoutPlanResult {
 
     private final List<WorkoutPlan> workoutPlanList;
 
+    /**
+     * Instantiates a new GetAllWorkoutResult object.
+     *
+     * @param workoutPlanList to access the WorkoutPlan table.
+     */
     public GetAllWorkoutPlanResult(List<WorkoutPlan> workoutPlanList) {
         this.workoutPlanList = workoutPlanList;
     }

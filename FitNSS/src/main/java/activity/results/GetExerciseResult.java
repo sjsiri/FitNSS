@@ -6,7 +6,11 @@ import models.ExerciseModel;
 public class GetExerciseResult {
 
     private final ExerciseModel exercise;
-
+    /**
+     * Instantiates a new GetExercise object.
+     *
+     * @param exercise Exercise to access the exercise table.
+     */
     public GetExerciseResult(Exercise exercise) {
         this.exercise = new ExerciseModel(exercise);
     }

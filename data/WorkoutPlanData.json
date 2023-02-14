@@ -1,0 +1,168 @@
+{
+  "WorkoutPlan": [
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "wq6aL"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Bench Press"
+              },
+              {
+                "S": "Barbell Rows"
+              },
+              {
+                "S": "Incline Bench Press"
+              },
+              {
+                "S": "Lat Pulldown"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Just a test with one exercise"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "12"
+              },
+              {
+                "S": "10"
+              },
+              {
+                "S": "8"
+              },
+              {
+                "S": "6"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "225"
+              },
+              {
+                "S": "135"
+              },
+              {
+                "S": "185"
+              },
+              {
+                "S": "120"
+              }
+            ]
+          },
+          "userId": {
+            "S": "surinhjs@gmail.com"
+          },
+          "workoutDayName": {
+            "S": "Test Fly at In data Round 2s"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "workoutPlanId": {
+            "S": "wzzsL"
+          },
+          "exercisesAdded": {
+            "L": [
+              {
+                "S": "Bench Press"
+              },
+              {
+                "S": "Barbell Rows"
+              },
+              {
+                "S": "Incline Bench Press"
+              },
+              {
+                "S": "Lat Pulldown"
+              }
+            ]
+          },
+          "notesBox": {
+            "S": "Just a test with one exercise"
+          },
+          "numberOfReps": {
+            "L": [
+              {
+                "S": "12"
+              },
+              {
+                "S": "10"
+              },
+              {
+                "S": "8"
+              },
+              {
+                "S": "6"
+              }
+            ]
+          },
+          "numberOfSets": {
+            "L": [
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              },
+              {
+                "N": "4"
+              }
+            ]
+          },
+          "numberOfWeights": {
+            "L": [
+              {
+                "S": "225"
+              },
+              {
+                "S": "135"
+              },
+              {
+                "S": "185"
+              },
+              {
+                "S": "120"
+              }
+            ]
+          },
+          "userId": {
+            "S": "surinhjs@gmail.com"
+          },
+          "workoutDayName": {
+            "S": "Test In data Round 3s"
+          }
+        }
+      }
+    }
+  ]
+}

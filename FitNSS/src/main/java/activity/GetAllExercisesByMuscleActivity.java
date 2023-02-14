@@ -16,11 +16,25 @@ public class GetAllExercisesByMuscleActivity {
 
     private final Logger log = LogManager.getLogger();
 
+    /**
+     * Instantiates a new GetAllExercisesByMuscleActivity object.
+     *
+     * @param exerciseDao ExerciseDao to access the Exercise table.
+     */
     @Inject
     public GetAllExercisesByMuscleActivity(ExerciseDao exerciseDao) {
         this.exerciseDao = exerciseDao;
     }
 
+    /**
+     * This method handles the incoming request by retrieving the exercises' movement from the database.
+     * <p>
+     * It then returns the GetAllExerciseResult.
+     * <p>
+     *
+     * @param getAllExercisesRequest request object containing the exercise ID
+     * @return getAllExercise result object containing the API defined {@link Exercise}
+     */
     public GetAllExercisesResult handleRequest(final GetAllExercisesRequest getAllExercisesRequest) {
         log.info("Received GetAllExerciseRequestByMuscle {}", getAllExercisesRequest);
         String requestedMuscleGroup = getAllExercisesRequest.getExerciseMuscle();

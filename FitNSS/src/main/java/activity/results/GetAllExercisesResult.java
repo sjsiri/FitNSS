@@ -10,7 +10,11 @@ public class GetAllExercisesResult {
 
     private final List<Exercise> exerciseList;
 
-
+    /**
+     * Instantiates a new GetAllExercisesResult object.
+     *
+     * @param exerciseList to access the exercise table.
+     */
     public GetAllExercisesResult(List<Exercise> exerciseList) {
         this.exerciseList = new ArrayList<>(exerciseList);
     }
