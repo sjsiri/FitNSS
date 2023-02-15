@@ -27,6 +27,14 @@ body {
     padding: 4px 20px;
 }
 
+.header_home {
+    font-size: 36px;
+    line-height: 40px;
+    height: 100px;
+    text-decoration: none;
+    color: var(--secondary-color);
+}
+
 select {
   font-weight: bold;
 }
@@ -35,7 +43,7 @@ label{
   font-weight:bold;
 }
 
-button {
+.button {
    background-color: var(--tertiary-color);
     border-radius: 8px;
     border-width: 0;
