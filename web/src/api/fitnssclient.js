@@ -158,6 +158,22 @@ export default class FitNSSClient extends BindingClass {
          }
      }
 
+    /**
+     * Gets the exercise for the given ID and deletes it from the database.
+     * @param id Unique identifier for a recipe
+     * @param errorCallback (Optional) A function to execute if the call fails.
+     * @returns The exercise's metadata.
+     */
+    async deleteExercise(exerciseId, errorCallback) {
+        try {
+            const response = await this.axiosClient.delete(`exercises/${exerciseId}`);
+            return response.data.exercise;
+        } catch (error) {
+            this.handleError(error, errorCallback)
+        }
+    }
+
+
      /**
        * Create a new workout plan.
        * @param payload object with workout plan data

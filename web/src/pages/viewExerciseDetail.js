@@ -11,9 +11,10 @@ class ViewExerciseDetail extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayExerciseDetails' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayExerciseDetails', 'deleteExerciseFromTable' ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayExerciseDetails);
+        document.getElementById('delete-exercise').addEventListener('click', this.deleteExerciseFromTable);
         this.header = new Header(this.dataStore);
     }
 
@@ -67,7 +68,23 @@ class ViewExerciseDetail extends BindingClass {
             document.getElementById('exerciseMovementGroup').innerHTML = exerciseDetail.exerciseMovementGroup;
             }
         }
+
+    async deleteExerciseFromTable() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const exerciseId = urlParams.get('id');
+
+            document.getElementById('delete-exercise').disabled = true;
+            document.getElementById('delete-exercise').value = 'Deleting Exercise...';
+            document.getElementById('delete-exercise').style.background='grey';
+
+            const exercise = await this.client.deleteExercise(exerciseId);
+            if (exercise) {
+                window.location.href = `/viewAllExercises.html`;
+            }
+        }
 }
+
+
 
 
 
