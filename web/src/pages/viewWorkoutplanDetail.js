@@ -27,10 +27,10 @@ class ViewWorkoutPlanDetail extends BindingClass {
 
         const workoutplanDetail = await this.client.getWorkoutPlan(workoutPlanId);
         this.dataStore.set('workoutplanDetail', workoutplanDetail);
-       // document.getElementById('update-department').addEventListener('click', async evt => {
-                        // console.log('The element that was clicked was ', deptId);
-                           // window.location.href = `/update_department.html?id=${deptId}`;
-                        //  });
+       document.getElementById('update-workout').addEventListener('click', async evt => {
+                                console.log('The element that was clicked was ', workoutPlanId);
+                                   window.location.href = `/updateWorkoutPlan.html?id=${workoutPlanId}`;
+                                 });
 
         document.getElementById('workoutPlan_loading').innerHTML = "";
     }

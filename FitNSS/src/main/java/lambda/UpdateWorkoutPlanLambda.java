@@ -5,6 +5,10 @@ import activity.results.UpdateWorkoutPlanResult;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 
+import java.util.Map;
+
+import static utils.NullUtils.ifNull;
+
 public class UpdateWorkoutPlanLambda
         extends LambdaActivityRunner<UpdateWorkoutPlanRequest, UpdateWorkoutPlanResult>
         implements RequestHandler<AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest>, LambdaResponse> {
@@ -16,12 +20,17 @@ public class UpdateWorkoutPlanLambda
      */
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest> input, Context context) {
+
+        UpdateWorkoutPlanRequest updatedWorkoutIdRequest = input.fromBody(UpdateWorkoutPlanRequest.class);
+        Map<String, String> path = ifNull(input.getPathParameters(), Map.of());
+        updatedWorkoutIdRequest.setWorkoutPlanId(path.get("workoutPlanId"));
+
         return super.runActivity(
                 () -> {
                     UpdateWorkoutPlanRequest unauthenticatedRequest = input.fromBody(UpdateWorkoutPlanRequest.class);
                     return input.fromUserClaims(claims ->
                             UpdateWorkoutPlanRequest.builder()
-                                    .withWorkoutPlanId(unauthenticatedRequest.getWorkoutPlanId())
+                                    .withWorkoutPlanId(updatedWorkoutIdRequest.getWorkoutPlanId())
                                     .withWorkoutDayName(unauthenticatedRequest.getWorkoutDayName())
                                     .withExercisesAdded(unauthenticatedRequest.getExercisesAdded())
                                     .withNumberOfSets(unauthenticatedRequest.getNumberOfSets())

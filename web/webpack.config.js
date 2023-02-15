@@ -31,6 +31,7 @@ module.exports = {
     createExercise: path.resolve(__dirname, 'src', 'pages', 'createExercise.js'),
     updateExercise: path.resolve(__dirname, 'src', 'pages', 'updateExercise.js'),
     createWorkoutPlan: path.resolve(__dirname, 'src', 'pages', 'createWorkoutPlan.js'),
+    updateWorkoutPlan: path.resolve(__dirname, 'src', 'pages', 'updateWorkoutPlan.js'),
   },
   output: {
     path: path.resolve(__dirname, 'build', 'assets'),

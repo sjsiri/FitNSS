@@ -196,6 +196,23 @@ export default class FitNSSClient extends BindingClass {
           }
       }
 
+     async updateWorkoutPlan(workoutPlanId, payload, errorCallback) {
+        try {
+            const token = await this.getTokenOrThrow("Only authenticated users can update workout plans.");
+            const identity = await this.getIdentity();
+            const response = await this.axiosClient.put(`workoutplan/${workoutPlanId}`, payload,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            return response.data.workoutPlanModel
+            } catch (error) {
+                this.handleError(error, errorCallback)
+            }
+     }
+
+
     /**
      * Helper method to log the error and run any error functions.
      * @param error The error received from the server.
