@@ -20,10 +20,10 @@ public class UpdateWorkoutPlanLambda
      */
     @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<UpdateWorkoutPlanRequest> input, Context context) {
+
         UpdateWorkoutPlanRequest updatedWorkoutIdRequest = input.fromBody(UpdateWorkoutPlanRequest.class);
         Map<String, String> path = ifNull(input.getPathParameters(), Map.of());
         updatedWorkoutIdRequest.setWorkoutPlanId(path.get("workoutPlanId"));
-
 
         return super.runActivity(
                 () -> {
