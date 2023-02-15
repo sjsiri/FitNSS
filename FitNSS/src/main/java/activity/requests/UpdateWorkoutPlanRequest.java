@@ -43,6 +43,10 @@ public class UpdateWorkoutPlanRequest {
         return workoutPlanId;
     }
 
+    public void setWorkoutPlanId(String workoutPlanId) {
+        this.workoutPlanId = workoutPlanId;
+    }
+
     public String getWorkoutDayName() {
         return workoutDayName;
     }
@@ -82,7 +86,6 @@ public class UpdateWorkoutPlanRequest {
                 ", numberOfWeights=" + numberOfWeights +
                 ", notesBox='" + notesBox + '\'' +
                 ", userId='" + userId + '\'' +
-                ", userName='" + '\'' +
                 '}';
     }
 
