@@ -253,6 +253,8 @@ Resources:
           Properties:
             Path: /exercises
             Method: post
+            Auth:
+              Authorizer: 'NONE'
   GetExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -272,6 +274,8 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   GetAllExercisesLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -291,6 +295,8 @@ Resources:
           Properties:
             Path: /exercises
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   UpdateExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -310,6 +316,8 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: put
+            Auth:
+              Authorizer: 'NONE'
   DeleteExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -329,6 +337,8 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: delete
+            Auth:
+              Authorizer: 'NONE'
   GetAllExercisesByMovementGroupLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -348,6 +358,8 @@ Resources:
           Properties:
             Path: /exercises/exerciseMovement/{exerciseMovementGroup}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   GetAllExercisesByMuscleLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -367,6 +379,8 @@ Resources:
           Properties:
             Path: /exercises/workingMuscle/{workingMuscle}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   GetWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -386,6 +400,8 @@ Resources:
           Properties:
             Path: /workoutplan/{workoutPlanId}
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   GetAllWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -405,6 +421,8 @@ Resources:
           Properties:
             Path: /workoutplan
             Method: get
+            Auth:
+              Authorizer: 'NONE'
   CreateWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -424,6 +442,7 @@ Resources:
           Properties:
             Path: /workoutplan
             Method: post
+
   UpdateWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:
