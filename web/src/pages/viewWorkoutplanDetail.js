@@ -75,8 +75,8 @@ class ViewWorkoutPlanDetail extends BindingClass {
         if (workoutplanDetail.notesBox){
             document.getElementById('notesBox').innerHTML = workoutplanDetail.notesBox;
             }
-        if (workoutplanDetail.isCompleted){
-            document.getElementById('isCompleted').innerHTML = workoutplanDetail.isCompleted;
+        if (workoutplanDetail.userId){
+            document.getElementById('userId').innerHTML = workoutplanDetail.userId;
             }
         }
 
