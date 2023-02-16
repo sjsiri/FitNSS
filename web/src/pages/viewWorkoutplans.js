@@ -77,7 +77,11 @@ class ViewWorkoutPlans extends BindingClass {
                                       });
 
                 let cell = row.insertCell();
-                let text = document.createTextNode(element.workoutDayName);
+                let text = document.createTextNode(element.userId);
+                cell.appendChild(text);
+
+                cell = row.insertCell();
+                text = document.createTextNode(element.workoutDayName);
                 cell.appendChild(text);
                 console.log(text);
             }
