@@ -112,19 +112,34 @@ class UpdateWorkoutPlan extends BindingClass {
      * Display workout plan details  on the page.
      */
     displayWorkoutPlanDetails() {
-        const workoutplanDetail = this.dataStore.get('workoutplanDetail');
+        const workoutPlanDetail = this.dataStore.get('workoutPlanDetail');
 
-        if (!workoutplanDetail) {
+        if (!workoutPlanDetail) {
             return;
         }
-        if (workoutplanDetail.workoutPlanId){
-            document.getElementById('workoutPlanId').value = workoutplanDetail.workoutPlanId;
+        if (workoutPlanDetail.workoutDayName){
+            document.getElementById('workoutDayName').value = workoutPlanDetail.workoutDayName;
         }
-        if (workoutplanDetail.workoutDayName){
-            document.getElementById('workoutDayName').value = workoutplanDetail.workoutDayName;
+        if (workoutPlanDetail.numberOfSets){
+            document.getElementById('numberOfSets').value = workoutPlanDetail.numberOfSets[0];
+            document.getElementById('numberOfSets2').value = workoutPlanDetail.numberOfSets[1];
+            document.getElementById('numberOfSets3').value = workoutPlanDetail.numberOfSets[2];
+            document.getElementById('numberOfSets4').value = workoutPlanDetail.numberOfSets[3];
         }
-        if (workoutplanDetail.notesBox){
-            document.getElementById('notesBox').value = workoutplanDetail.notesBox;
+        if (workoutPlanDetail.numberOfReps){
+            document.getElementById('numberOfReps').value = workoutPlanDetail.numberOfReps[0];
+            document.getElementById('numberOfReps2').value = workoutPlanDetail.numberOfReps[1];
+            document.getElementById('numberOfReps3').value = workoutPlanDetail.numberOfReps[2];
+            document.getElementById('numberOfReps4').value = workoutPlanDetail.numberOfReps[3];
+        }
+        if (workoutPlanDetail.numberOfWeights){
+            document.getElementById('numberOfWeights').value = workoutPlanDetail.numberOfWeights[0];
+            document.getElementById('numberOfWeights2').value = workoutPlanDetail.numberOfWeights[1];
+            document.getElementById('numberOfWeights3').value = workoutPlanDetail.numberOfWeights[2];
+            document.getElementById('numberOfWeights4').value = workoutPlanDetail.numberOfWeights[3];
+        }
+        if (workoutPlanDetail.notesBox){
+            document.getElementById('notesBox').value = workoutPlanDetail.notesBox;
             }
         }
 
