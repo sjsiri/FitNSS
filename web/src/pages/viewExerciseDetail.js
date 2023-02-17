@@ -55,9 +55,6 @@ class ViewExerciseDetail extends BindingClass {
         if (!exerciseDetail) {
             return;
         }
-        if (exerciseDetail.exerciseId){
-            document.getElementById('exerciseId').innerHTML = exerciseDetail.exerciseId;
-        }
         if (exerciseDetail.exerciseName){
             document.getElementById('exerciseName').innerHTML = exerciseDetail.exerciseName;
         }
@@ -66,6 +63,9 @@ class ViewExerciseDetail extends BindingClass {
         }
         if (exerciseDetail.exerciseMovementGroup){
             document.getElementById('exerciseMovementGroup').innerHTML = exerciseDetail.exerciseMovementGroup;
+            }
+        if (exerciseDetail.userId){
+            document.getElementById('userId').innerHTML = exerciseDetail.userId;
             }
         }
 

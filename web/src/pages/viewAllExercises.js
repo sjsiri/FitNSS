@@ -75,7 +75,7 @@ class ViewAllExercises extends BindingClass {
                                       });
 
                 let cell = row.insertCell();
-                let text = document.createTextNode(element.exerciseId);
+                let text = document.createTextNode(element.userId);
                 cell.appendChild(text);
 
                 cell = row.insertCell();

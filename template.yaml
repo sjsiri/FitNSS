@@ -253,8 +253,6 @@ Resources:
           Properties:
             Path: /exercises
             Method: post
-            Auth:
-              Authorizer: 'NONE'
   GetExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:

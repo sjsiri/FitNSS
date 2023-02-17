@@ -14,6 +14,8 @@ public class Exercise {
     private String workingMuscle;
     private String exerciseMovementGroup;
 
+    private String userId;
+
     @DynamoDBHashKey(attributeName = "exerciseId")
     public String getExerciseId() {
         return exerciseId;
@@ -50,6 +52,14 @@ public class Exercise {
 
     public void setExerciseMovementGroup(String exerciseMovementGroup) {
         this.exerciseMovementGroup = exerciseMovementGroup;
+    }
+    @DynamoDBAttribute(attributeName = "userId")
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     @Override
