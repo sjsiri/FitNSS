@@ -28,7 +28,7 @@ public class UpdateExerciseActivityTest {
     public void handleRequest_goodRequestUpdatesName() {
         // GIVEN
         String id = "id";
-        String pathId = "id";
+        String expectedUserId = "userID";
         String expectedName = "new name";
         String expectedMuscle = "Chest";
         String expectedMovement = "Push";
@@ -38,14 +38,14 @@ public class UpdateExerciseActivityTest {
                 .withExerciseName(expectedName)
                 .withWorkingMuscle(expectedMuscle)
                 .withExerciseMovementGroup(expectedMovement)
+                .withUserId(expectedUserId)
                 .build();
-
-        request.setPathExerciseId(pathId);
 
         Exercise startingExercise = new Exercise();
         startingExercise.setExerciseName("old name");
         startingExercise.setExerciseMovementGroup(expectedMovement);
         startingExercise.setWorkingMuscle(expectedMuscle);
+        startingExercise.setUserId(expectedUserId);
 
         when(exerciseDao.getExercise(id)).thenReturn(startingExercise);
 
@@ -54,5 +54,6 @@ public class UpdateExerciseActivityTest {
 
         // THEN
         assertEquals(expectedName, result.getExercise().getExerciseName());
+        assertEquals(expectedUserId, result.getExercise().getUserId());
     }
 }

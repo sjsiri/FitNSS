@@ -314,8 +314,6 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: put
-            Auth:
-              Authorizer: 'NONE'
   DeleteExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -440,7 +438,6 @@ Resources:
           Properties:
             Path: /workoutplan
             Method: post
-
   UpdateWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:

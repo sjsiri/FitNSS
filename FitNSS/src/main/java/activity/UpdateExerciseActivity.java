@@ -40,20 +40,15 @@ public class UpdateExerciseActivity {
     public UpdateExerciseResult handleRequest(final UpdateExerciseRequest updateExerciseRequest) {
         log.info("Received UpdateExerciseRequest {}", updateExerciseRequest);
 
-        if (updateExerciseRequest.getExerciseId() != null && !updateExerciseRequest.getPathExerciseId().equals(updateExerciseRequest.getExerciseId())) {
-            throw new ExerciseNotFoundException();
-        }
-
-        updateExerciseRequest.setExerciseId(updateExerciseRequest.getPathExerciseId());
-
         if (updateExerciseRequest.getExerciseId() == null || exerciseDao.getExercise(updateExerciseRequest.getExerciseId()) == null) {
             throw new ExerciseNotFoundException();
         }
 
+        Exercise exercise = exerciseDao.getExercise(updateExerciseRequest.getExerciseId());
 
-
-
-        Exercise exercise = exerciseDao.getExercise(updateExerciseRequest.getPathExerciseId());
+        if (!exercise.getUserId().equals(updateExerciseRequest.getUserId())) {
+            throw new SecurityException("You must be the owner of the exercise to update it.");
+        }
 
         if (updateExerciseRequest.getExerciseName() != null) {
             exercise.setExerciseName(updateExerciseRequest.getExerciseName());

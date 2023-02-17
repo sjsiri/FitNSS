@@ -158,7 +158,15 @@ export default class FitNSSClient extends BindingClass {
 
     async updateExercise(exercise, errorCallback) {
          try {
-             const response = await this.axiosClient.put(`exercises/${exercise.exerciseId}`, exercise);
+             const token = await this.getTokenOrThrow("Only authenticated users can update exercises.");
+             const identity = await this.getIdentity();
+             const response = await this.axiosClient.put(`exercises/${exercise.exerciseId}`, exercise,
+             {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+             }
+             );
              return response.data.exerciseModel;
          } catch (error) {
              this.handleError(error, errorCallback)
