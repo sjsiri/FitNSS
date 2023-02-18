@@ -181,7 +181,15 @@ export default class FitNSSClient extends BindingClass {
      */
     async deleteExercise(exerciseId, errorCallback) {
         try {
-            const response = await this.axiosClient.delete(`exercises/${exerciseId}`);
+            const token = await this.getTokenOrThrow("Only authenticated users can delete exercises.")
+            const identity = await this.getIdentity();
+            const response = await this.axiosClient.delete(`exercises/${exerciseId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             return response.data.exercise;
         } catch (error) {
             this.handleError(error, errorCallback)

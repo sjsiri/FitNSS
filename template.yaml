@@ -333,8 +333,6 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: delete
-            Auth:
-              Authorizer: 'NONE'
   GetAllExercisesByMovementGroupLambda:
     Type: AWS::Serverless::Function
     Properties:

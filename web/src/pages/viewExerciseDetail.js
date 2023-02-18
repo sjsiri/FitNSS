@@ -81,6 +81,9 @@ class ViewExerciseDetail extends BindingClass {
             if (exercise) {
                 window.location.href = `/viewAllExercises.html`;
             }
+            else {
+                window.alert("You must be the owner to delete this exerise.");
+            }
         }
 }
 

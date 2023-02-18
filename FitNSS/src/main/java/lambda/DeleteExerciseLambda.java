@@ -10,7 +10,7 @@ import java.util.Map;
 import static utils.NullUtils.ifNull;
 
 public class DeleteExerciseLambda extends LambdaActivityRunner<DeleteExerciseRequest, DeleteExerciseResult>
-    implements RequestHandler<LambdaRequest<DeleteExerciseRequest>, LambdaResponse> {
+    implements RequestHandler<AuthenticatedLambdaRequest<DeleteExerciseRequest>, LambdaResponse> {
 
     /**
      * @param input   The Lambda Function input
@@ -18,12 +18,18 @@ public class DeleteExerciseLambda extends LambdaActivityRunner<DeleteExerciseReq
      * @return a LambdaResponse
      */
     @Override
-    public LambdaResponse handleRequest(LambdaRequest<DeleteExerciseRequest> input, Context context) {
-        return super.runActivity(
-                () -> input.fromPath(path -> DeleteExerciseRequest.builder()
-                        .withExerciseId(path.get("exerciseId")).build()),
-                (request, serviceComponent) ->
-                        serviceComponent.provideDeleteExerciseActivity().handleRequest(request)
-        );
+    public LambdaResponse handleRequest(AuthenticatedLambdaRequest<DeleteExerciseRequest> input, Context context) {
+       DeleteExerciseRequest unauthenticatedRequest = input.fromPath(path -> DeleteExerciseRequest.builder()
+               .withExerciseId(path.get("exerciseId"))
+               .build());
+
+       return super.runActivity(
+               () -> input.fromUserClaims(claims ->
+                       DeleteExerciseRequest.builder()
+                               .withExerciseId(unauthenticatedRequest.getExerciseId())
+                               .withUserId(claims.get("email"))
+                               .build()),
+               (request, serviceComponent) -> serviceComponent.provideDeleteExerciseActivity().handleRequest(request)
+       );
     }
 }
