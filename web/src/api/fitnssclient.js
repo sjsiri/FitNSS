@@ -151,6 +151,8 @@ export default class FitNSSClient extends BindingClass {
             });
             return response.data.exercise;
         } catch (error) {
+            window.alert("You must be logged in to create an exercise. Redirecting back to view all exercises..");
+            window.location.href = `/viewAllExercises.html`;
             this.handleError(error, errorCallback)
         }
     }
@@ -218,6 +220,8 @@ export default class FitNSSClient extends BindingClass {
               });
               return response.data.workoutPlan;
           } catch (error) {
+              window.alert("You must be the logged in to create a plan. Redirecting to view all main page...");
+              window.location.href = `/index.html`;
               this.handleError(error, errorCallback)
           }
       }
@@ -234,6 +238,8 @@ export default class FitNSSClient extends BindingClass {
             });
             return response.data.workoutPlanModel
             } catch (error) {
+                window.alert("You must be the owner to update this plan. Redirecting to view all workouts...");
+                window.location.href = `/viewAllWorkoutPlans.html`;
                 this.handleError(error, errorCallback)
             }
      }

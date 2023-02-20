@@ -124,7 +124,7 @@ Resources:
     Properties:
       DistributionConfig:
         Comment: "Cloudfront distribution for serverless website"
-        DefaultRootObject: "index.html"
+        DefaultRootObject: "oldindex.html"
         Enabled: true
         HttpVersion: http2
         PriceClass: PriceClass_100
