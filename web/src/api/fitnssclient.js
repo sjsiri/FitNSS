@@ -244,6 +244,32 @@ export default class FitNSSClient extends BindingClass {
             }
      }
 
+     /**
+          * Gets the workout plan for the given ID and deletes it from the database.
+          * @param id Unique identifier for a recipe
+          * @param errorCallback (Optional) A function to execute if the call fails.
+          * @returns The workout's metadata.
+          */
+         async deleteWorkoutPlan(workoutPlanId, errorCallback) {
+             try {
+                 const token = await this.getTokenOrThrow("Only authenticated users can delete exercises.")
+                 const identity = await this.getIdentity();
+                 const response = await this.axiosClient.delete(`workoutplan/${workoutPlanId}`,
+                 {
+                     headers: {
+                         Authorization: `Bearer ${token}`
+                     }
+                 }
+                 );
+                  window.location.href = `/viewAllWorkoutPlans.html`;
+                 return response.data.exercise;
+             } catch (error) {
+                 window.alert("You must be the owner to delete this workout. Redirecting back to view all workouts..");
+                 window.location.href = `/viewAllWorkoutPlans.html`;
+                 this.handleError(error, errorCallback)
+             }
+         }
+
 
     /**
      * Helper method to log the error and run any error functions.

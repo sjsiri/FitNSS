@@ -11,9 +11,10 @@ class ViewWorkoutPlanDetail extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayWorkoutPlanDetails' ], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayWorkoutPlanDetails', 'deleteWorkoutPlanFromTable', ], this);
         this.dataStore = new DataStore();
         this.dataStore.addChangeListener(this.displayWorkoutPlanDetails);
+        document.getElementById('delete-workout').addEventListener('click', this.deleteWorkoutPlanFromTable);
         this.header = new Header(this.dataStore);
     }
 
@@ -76,6 +77,17 @@ class ViewWorkoutPlanDetail extends BindingClass {
         if (workoutplanDetail.userId){
             document.getElementById('userId').innerHTML = workoutplanDetail.userId;
             }
+        }
+
+    async deleteWorkoutPlanFromTable() {
+                const urlParams = new URLSearchParams(window.location.search);
+                const workoutPlanId = urlParams.get('id');
+
+                document.getElementById('delete-workout').disabled = true;
+                document.getElementById('delete-workout').value = 'Deleting Workout...';
+                document.getElementById('delete-workout').style.background='grey';
+
+                const workout = await this.client.deleteWorkoutPlan(workoutPlanId);
         }
 
  }

@@ -80,4 +80,9 @@ public interface ServiceComponent {
      */
     UpdateWorkoutPlanActivity provideUpdateWorkoutPlanActivity();
 
+    /**
+     * Provides the relevant activity.
+     * @return DeleteWorkoutPlanActivity
+     */
+    DeleteWorkoutPlanActivity provideDeleteWorkoutPlanActivity();
 }
