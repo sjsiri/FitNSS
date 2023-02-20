@@ -169,6 +169,7 @@ export default class FitNSSClient extends BindingClass {
              );
              return response.data.exerciseModel;
          } catch (error) {
+             window.alert("You must be the owner to update this exerise. Redirecting to view all exercises...");
              this.handleError(error, errorCallback)
          }
      }
@@ -192,6 +193,8 @@ export default class FitNSSClient extends BindingClass {
             );
             return response.data.exercise;
         } catch (error) {
+            window.alert("You must be the owner to delete this exerise. Redirecting back to view all exercises..");
+            window.location.href = `/viewAllExercises.html`;
             this.handleError(error, errorCallback)
         }
     }
