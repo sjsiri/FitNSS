@@ -12,10 +12,6 @@
     counter-reset: section;
     font-family: "Helvetica Neue",Helvetica,sans-serif;
 }
-body {
-	font-family: Calibri,sans-serif;
-	font-weight: 100;
-}
 
 .header {
     /* Flexbox: https://css-tricks.com/snippets/css/a-guide-to-flexbox/ */
@@ -23,7 +19,7 @@ body {
     justify-content: space-between;
     align-items: center;
     background-color: var(--primary-color);
-    color:var(--secondary-color);
+    color: var(--secondary-color);
     padding: 4px 20px;
 }
 
@@ -33,14 +29,6 @@ body {
     height: 100px;
     text-decoration: none;
     color: var(--secondary-color);
-}
-
-select {
-  font-weight: bold;
-}
-
-label{
-  font-weight:bold;
 }
 
 .button {
@@ -64,8 +52,20 @@ label{
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-  }
+}
 
+.button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+select {
+  font-weight: bold;
+}
+
+label{
+  font-weight:bold;
+}
 
 form label{
   font-weight:bold;
@@ -85,6 +85,22 @@ form label{
 .div-3{
   font-weight:bold;
   display: inline-block;
+}
+
+.card {
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    margin: 20px;
+    padding: 10px 20px;
+}
+
+.card-content {
+    max-width: 500px;
+}
+
+.card-content .form-field {
+    display: flex;
+    flex-direction: column;
 }
 
 table {
@@ -111,112 +127,62 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #dddddd;;
+.intro{
+  margin: auto;
 }
 
-li {
+.box{
+  height: 300px;
+  width: 800px;
+  background: linear-gradient(to left, #003366 0%, #99ccff 100%);
+  position:absolute;
+  top:150px;
+  left:0;
+  right:0;
+  margin:auto;
+  border-radius:20px;
+}
+.black {
+  width: 50%;
   float: left;
+  background: linear-gradient(to bottom right, #6699ff 0%, #000066 100%);
+  height: 100vh;
 }
 
-li a {
-  display: block;
-  color: white;
-  background-color: var(--primary-color);;
+.white{
+  width: 50%;
+  float: right;
+  background: linear-gradient(to bottom left, #6699ff 0%, #000066 100%);
+  height: 100vh;
+}
+
+.boxfather{
+  width:100%;
+  position:absolute;
+}
+
+.box h1{
+  color: #E4E4E4;
+  font-size: 5em;
   text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+  position: relative;
+  top:70px;
+  font-family: 'Montserrat', sans-serif;
 }
 
-/* Change the link color to #111 (black) on hover */
-li a:hover {
-  background-color: #FF7f50;
+.box boxbuttons{
+  left:13%;
+  position:relative;
+  top:120px;
+  padding: 8px 20px;
+  cursor:pointer;
+  border:0;
+  outline:none;
+  color:#525252;
+  background:#E4E4E4;
+  transition:all .3s ease;
+  font-size: 19px;
+  font-family: montserrat;
+  border-radius:5px;
 }
 
-.active {
-  background-color: #FF7f50;
-}
-
-
-.header_home {
-    font-size: 36px;
-    line-height: 40px;
-    height: 100px;
-    text-decoration: none;
-    color: var(--secondary-color);
-}
-
-.card {
-    color: var(--primary-color);
-    background-color: var(--secondary-color);
-    margin: 20px;
-    padding: 10px 20px;
-}
-
-.validated-field:invalid {
-    outline: 2px solid var(--error-color);
-}
-.validated-field:focus:invalid {
-    color: var(--error-color);
-}
-
-.card-content {
-    max-width: 500px;
-}
-
-.card-content .form-field {
-    display: flex;
-    flex-direction: column;
-}
-
-.required:after {
-    content:" *";
-    color: red;
-  }
-
-.tags {
-    display: flex;
-    flex-direction: row;
-}
-
-.tag {
-    font-size: 12px;
-    margin: 0 10px;
-    padding: 4px 8px;
-    background-color: var(--primary-color);
-    color: var(--secondary-color);
-    position: relative;
-    border-radius: 16px;
-}
-
-.song {
-    padding: 2px;
-    display: flex;
-}
-
-.song .title {
-    flex: 20%;
-}
-
-.song .album {
-    flex: 80%;
-}
-
-.text-center {
-  text-align: center;
-}
-/*
-Flexbox on a lists removes the numbers. We use a counter here to add them back.
-https://stackoverflow.com/a/34316093
-https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Lists_and_Counters/Using_CSS_counters
-*/
-.song:before {
-    counter-increment: section;
-    content: counter(section) ".";
-    position: absolute;
-    margin-left: -40px;
-}
