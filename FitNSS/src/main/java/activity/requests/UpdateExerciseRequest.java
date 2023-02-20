@@ -6,17 +6,18 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 @JsonDeserialize(builder = UpdateExerciseRequest.Builder.class)
 public class UpdateExerciseRequest {
     private String exerciseId;
-
-    private String pathExerciseId;
     private String exerciseName;
     private String workingMuscle;
     private String exerciseMovementGroup;
 
-    public UpdateExerciseRequest(String exerciseId, String exerciseName, String workingMuscle, String exerciseMovementGroup) {
+    private String userId;
+
+    public UpdateExerciseRequest(String exerciseId, String exerciseName, String workingMuscle, String exerciseMovementGroup, String userId) {
         this.exerciseId = exerciseId;
         this.exerciseName = exerciseName;
         this.workingMuscle = workingMuscle;
         this.exerciseMovementGroup = exerciseMovementGroup;
+        this.userId = userId;
     }
 
     public String getExerciseId() {
@@ -25,14 +26,6 @@ public class UpdateExerciseRequest {
 
     public void setExerciseId(String exerciseId) {
         this.exerciseId = exerciseId;
-    }
-
-    public String getPathExerciseId() {
-        return pathExerciseId;
-    }
-
-    public void setPathExerciseId(String pathExerciseId) {
-        this.pathExerciseId = pathExerciseId;
     }
 
     public String getExerciseName() {
@@ -47,6 +40,10 @@ public class UpdateExerciseRequest {
         return exerciseMovementGroup;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
     @Override
     public String toString() {
         return "UpdateExerciseRequest{" +
@@ -54,6 +51,7 @@ public class UpdateExerciseRequest {
                 ", exerciseName='" + exerciseName + '\'' +
                 ", workingMuscle='" + workingMuscle + '\'' +
                 ", exerciseMovementGroup='" + exerciseMovementGroup + '\'' +
+                ", userId='" + userId + '\'' +
                 '}';
     }
 
@@ -67,6 +65,8 @@ public class UpdateExerciseRequest {
         private String exerciseName;
         private String workingMuscle;
         private String exerciseMovementGroup;
+
+        private String userId;
 
         public Builder withExerciseId(String exerciseId) {
             this.exerciseId =  exerciseId;
@@ -88,8 +88,13 @@ public class UpdateExerciseRequest {
             return this;
         }
 
+        public Builder withUserId(String userId) {
+            this.userId = userId;
+            return this;
+        }
+
         public UpdateExerciseRequest build() {
-            return new UpdateExerciseRequest(exerciseId, exerciseName, workingMuscle, exerciseMovementGroup);
+            return new UpdateExerciseRequest(exerciseId, exerciseName, workingMuscle, exerciseMovementGroup, userId);
         }
 
     }

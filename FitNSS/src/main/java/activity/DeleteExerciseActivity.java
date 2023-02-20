@@ -35,6 +35,10 @@ public class DeleteExerciseActivity {
 
         Exercise exercise = exerciseDao.getExercise(deleteExerciseRequest.getExerciseId());
 
+        if (!exercise.getUserId().equals(deleteExerciseRequest.getUserId())) {
+            throw new SecurityException("You must be the owner of the exercise to delete it.");
+        }
+
         exerciseDao.deleteExercise(exercise);
 
         return DeleteExerciseResult.builder()

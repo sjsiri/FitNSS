@@ -33,11 +33,13 @@ public class CreateExerciseActivityTest {
         String expectedName = "expectedName";
         String expectedMuscle = "Hamstrings";
         String expectedMovement = "Lower";
+        String expectedUserId = "userId";
 
         CreateExerciseRequest request = CreateExerciseRequest.builder()
                 .withExerciseName(expectedName)
                 .withWorkingMuscle(expectedMuscle)
                 .withExerciseMovementGroup(expectedMovement)
+                .withUserId(expectedUserId)
                 .build();
 
         // WHEN
@@ -50,5 +52,6 @@ public class CreateExerciseActivityTest {
         assertEquals(expectedName, result.getExercise().getExerciseName());
         assertEquals(expectedMovement, result.getExercise().getExerciseMovementGroup());
         assertEquals(expectedMuscle, result.getExercise().getWorkingMuscle());
+        assertEquals(expectedUserId, result.getExercise().getUserId());
     }
 }

@@ -11,7 +11,7 @@ import static utils.NullUtils.ifNull;
 
 public class UpdateExerciseLambda
         extends LambdaActivityRunner<UpdateExerciseRequest, UpdateExerciseResult>
-        implements RequestHandler<LambdaRequest<UpdateExerciseRequest>, LambdaResponse> {
+        implements RequestHandler<AuthenticatedLambdaRequest<UpdateExerciseRequest>, LambdaResponse> {
 
     /**
      * @param input   The Lambda Function input
@@ -19,16 +19,24 @@ public class UpdateExerciseLambda
      * @return a LambdaResponse
      */
     @Override
-    public LambdaResponse handleRequest(LambdaRequest<UpdateExerciseRequest> input, Context context) {
+    public LambdaResponse handleRequest(AuthenticatedLambdaRequest<UpdateExerciseRequest> input, Context context) {
+        UpdateExerciseRequest updateExerciseRequest = input.fromBody(UpdateExerciseRequest.class);
+        Map<String, String> path = ifNull(input.getPathParameters(), Map.of());
+        updateExerciseRequest.setExerciseId(path.get("exerciseId"));
+
         return super.runActivity(
                 () -> {
-                    UpdateExerciseRequest updateExerciseRequest = input.fromBody(UpdateExerciseRequest.class);
-                    Map<String, String> path = ifNull(input.getPathParameters(), Map.of());
-                    updateExerciseRequest.setPathExerciseId(path.get("exerciseId"));
-                    return updateExerciseRequest;
+                    UpdateExerciseRequest unauthenticatedRequest = input.fromBody(UpdateExerciseRequest.class);
+                    return input.fromUserClaims(claims ->
+                            UpdateExerciseRequest.builder()
+                                    .withExerciseId(updateExerciseRequest.getExerciseId())
+                                    .withExerciseName(unauthenticatedRequest.getExerciseName())
+                                    .withWorkingMuscle(unauthenticatedRequest.getWorkingMuscle())
+                                    .withExerciseMovementGroup(unauthenticatedRequest.getExerciseMovementGroup())
+                                    .withUserId(claims.get("email"))
+                                    .build());
                 },
-                (request, serviceComponent) ->
-                        serviceComponent.provideUpdateExerciseActivity().handleRequest(request)
+                (request, serviceComponent) -> serviceComponent.provideUpdateExerciseActivity().handleRequest(request)
         );
     }
 }

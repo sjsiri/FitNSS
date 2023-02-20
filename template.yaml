@@ -124,7 +124,7 @@ Resources:
     Properties:
       DistributionConfig:
         Comment: "Cloudfront distribution for serverless website"
-        DefaultRootObject: "index.html"
+        DefaultRootObject: "oldindex.html"
         Enabled: true
         HttpVersion: http2
         PriceClass: PriceClass_100
@@ -253,8 +253,6 @@ Resources:
           Properties:
             Path: /exercises
             Method: post
-            Auth:
-              Authorizer: 'NONE'
   GetExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -316,8 +314,6 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: put
-            Auth:
-              Authorizer: 'NONE'
   DeleteExerciseLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -337,8 +333,6 @@ Resources:
           Properties:
             Path: /exercises/{exerciseId}
             Method: delete
-            Auth:
-              Authorizer: 'NONE'
   GetAllExercisesByMovementGroupLambda:
     Type: AWS::Serverless::Function
     Properties:
@@ -442,7 +436,6 @@ Resources:
           Properties:
             Path: /workoutplan
             Method: post
-
   UpdateWorkoutPlanLambda:
     Type: AWS::Serverless::Function
     Properties:

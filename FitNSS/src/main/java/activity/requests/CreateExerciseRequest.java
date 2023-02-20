@@ -15,11 +15,14 @@ public class CreateExerciseRequest {
 
     private final String exerciseMovementGroup;
 
-    public CreateExerciseRequest(String exerciseId, String exerciseName, String workingMuscle, String exerciseMovementGroup) {
+    private final String userId;
+
+    public CreateExerciseRequest(String exerciseId, String exerciseName, String workingMuscle, String exerciseMovementGroup, String userId) {
         this.exerciseId = exerciseId;
         this.exerciseName = exerciseName;
         this.workingMuscle = workingMuscle;
         this.exerciseMovementGroup = exerciseMovementGroup;
+        this.userId = userId;
     }
 
     public String getExerciseId() {
@@ -38,6 +41,21 @@ public class CreateExerciseRequest {
         return exerciseMovementGroup;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    @Override
+    public String toString() {
+        return "CreateExerciseRequest{" +
+                "exerciseId='" + exerciseId + '\'' +
+                ", exerciseName='" + exerciseName + '\'' +
+                ", workingMuscle='" + workingMuscle + '\'' +
+                ", exerciseMovementGroup='" + exerciseMovementGroup + '\'' +
+                ", userId='" + userId + '\'' +
+                '}';
+    }
+
     //CHECKSTYLE:OFF:Builder
     public static Builder builder() {
         return new Builder();
@@ -52,6 +70,8 @@ public class CreateExerciseRequest {
         private String workingMuscle;
 
         private String exerciseMovementGroup;
+
+        private String userId;
 
         public Builder withExerciseId(String exerciseId) {
             this.exerciseId = exerciseId;
@@ -72,12 +92,17 @@ public class CreateExerciseRequest {
             this.exerciseMovementGroup = exerciseMovementGroup;
             return this;
         }
+
+        public Builder withUserId(String userId) {
+            this.userId = userId;
+            return this;
+        }
         public CreateExerciseRequest build() {
             return new CreateExerciseRequest(
                     exerciseId,
                     exerciseName,
                     workingMuscle,
-                    exerciseMovementGroup);
+                    exerciseMovementGroup, userId);
         }
 
     }

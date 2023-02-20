@@ -54,9 +54,7 @@ class ViewWorkoutPlanDetail extends BindingClass {
         if (!workoutplanDetail) {
             return;
         }
-        if (workoutplanDetail.workoutPlanId){
-            document.getElementById('workoutPlanId').innerHTML = workoutplanDetail.workoutPlanId;
-        }
+
         if (workoutplanDetail.workoutDayName){
             document.getElementById('workoutDayName').innerHTML = workoutplanDetail.workoutDayName;
         }

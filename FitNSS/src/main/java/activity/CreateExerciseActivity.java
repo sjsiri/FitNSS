@@ -42,6 +42,7 @@ public class CreateExerciseActivity {
         exercise.setExerciseName(request.getExerciseName());
         exercise.setExerciseMovementGroup(request.getExerciseMovementGroup());
         exercise.setWorkingMuscle(request.getWorkingMuscle());
+        exercise.setUserId(request.getUserId());
 
         exerciseDao.saveExercise(exercise);
 

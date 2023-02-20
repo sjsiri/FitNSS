@@ -141,9 +141,18 @@ export default class FitNSSClient extends BindingClass {
      */
     async createExercise(payload, errorCallback) {
         try {
-            const response = await this.axiosClient.post(`exercises`, payload);
+            const token = await this.getTokenOrThrow("Only authenticated users can create exercises.");
+            const identity = await this.getIdentity();
+            const response = await this.axiosClient.post(`exercises`, payload,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             return response.data.exercise;
         } catch (error) {
+            window.alert("You must be logged in to create an exercise. Redirecting back to view all exercises..");
+            window.location.href = `/viewAllExercises.html`;
             this.handleError(error, errorCallback)
         }
     }
@@ -151,9 +160,18 @@ export default class FitNSSClient extends BindingClass {
 
     async updateExercise(exercise, errorCallback) {
          try {
-             const response = await this.axiosClient.put(`exercises/${exercise.exerciseId}`, exercise);
+             const token = await this.getTokenOrThrow("Only authenticated users can update exercises.");
+             const identity = await this.getIdentity();
+             const response = await this.axiosClient.put(`exercises/${exercise.exerciseId}`, exercise,
+             {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+             }
+             );
              return response.data.exerciseModel;
          } catch (error) {
+             window.alert("You must be the owner to update this exerise. Redirecting to view all exercises...");
              this.handleError(error, errorCallback)
          }
      }
@@ -166,9 +184,19 @@ export default class FitNSSClient extends BindingClass {
      */
     async deleteExercise(exerciseId, errorCallback) {
         try {
-            const response = await this.axiosClient.delete(`exercises/${exerciseId}`);
+            const token = await this.getTokenOrThrow("Only authenticated users can delete exercises.")
+            const identity = await this.getIdentity();
+            const response = await this.axiosClient.delete(`exercises/${exerciseId}`,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }
+            );
             return response.data.exercise;
         } catch (error) {
+            window.alert("You must be the owner to delete this exerise. Redirecting back to view all exercises..");
+            window.location.href = `/viewAllExercises.html`;
             this.handleError(error, errorCallback)
         }
     }
@@ -192,6 +220,8 @@ export default class FitNSSClient extends BindingClass {
               });
               return response.data.workoutPlan;
           } catch (error) {
+              window.alert("You must be the logged in to create a plan. Redirecting to view all main page...");
+              window.location.href = `/index.html`;
               this.handleError(error, errorCallback)
           }
       }
@@ -208,6 +238,8 @@ export default class FitNSSClient extends BindingClass {
             });
             return response.data.workoutPlanModel
             } catch (error) {
+                window.alert("You must be the owner to update this plan. Redirecting to view all workouts...");
+                window.location.href = `/viewAllWorkoutPlans.html`;
                 this.handleError(error, errorCallback)
             }
      }

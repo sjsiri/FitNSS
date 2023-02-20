@@ -44,7 +44,7 @@ public class UpdateWorkoutPlanActivity {
         WorkoutPlan workoutPlan = workoutPlanDao.getWorkoutPlan(updateWorkoutPlanRequest.getWorkoutPlanId());
 
         if (!workoutPlan.getUserId().equals(updateWorkoutPlanRequest.getUserId())) {
-            throw new SecurityException("You must own a workoutplan to update it.");
+            throw new SecurityException("You must be the owner of the workout plan to update it.");
         }
 
         if (updateWorkoutPlanRequest.getUserId() != null) {
