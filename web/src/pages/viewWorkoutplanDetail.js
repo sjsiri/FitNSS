@@ -80,6 +80,7 @@ class ViewWorkoutPlanDetail extends BindingClass {
         }
 
     async deleteWorkoutPlanFromTable() {
+                if (confirm("Are you sure you want to delete this workout?") == true) {
                 const urlParams = new URLSearchParams(window.location.search);
                 const workoutPlanId = urlParams.get('id');
 
@@ -88,6 +89,7 @@ class ViewWorkoutPlanDetail extends BindingClass {
                 document.getElementById('delete-workout').style.background='grey';
 
                 const workout = await this.client.deleteWorkoutPlan(workoutPlanId);
+                }
         }
 
  }

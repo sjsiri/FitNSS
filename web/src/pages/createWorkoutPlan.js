@@ -106,38 +106,119 @@ class CreateWorkoutPlan extends BindingClass {
      */
      async submit() {
         const workoutDayName = document.getElementById('workoutDayName').value;
+        if (!document.getElementById('workoutDayName').value) {
+            alert("Please enter a name for the workout.")
+            return false;
+        }
         const exerciseList = document.getElementById('exercisesList');
         const exerciseId = document.getElementById('exercisesList').value;
         const exerciseName = exerciseList.options[exerciseList.selectedIndex].innerHTML;
+        if (exerciseName == "-- Select Exercises --") {
+            alert("Please select an exercise for exercise 1.")
+            return false;
+        }
+
+        const numberOfSets = document.getElementById('numberOfSets').value;
+        if (numberOfSets == "") {
+            alert("Please enter the amount of sets for Exercise 1.")
+            return false;
+        }
+
+        const numberOfReps = document.getElementById('numberOfReps').value;
+        if (numberOfReps == "") {
+            alert("Please enter the amount of reps for Exercise 1.")
+            return false;
+        }
+
+        const numberOfWeights = document.getElementById('numberOfWeights').value;
+        if (numberOfWeights == "") {
+            alert("Please enter the prescribed load for Exercise 1.")
+            return false;
+        }
 
         const exerciseList2 = document.getElementById('exercisesList2');
         const exerciseId2 = document.getElementById('exercisesList2').value;
         const exerciseName2 = exerciseList2.options[exerciseList2.selectedIndex].innerHTML;
+        if (exerciseName2 == "-- Select Exercises --") {
+            alert("Please select an exercise for exercise 2.")
+            return false;
+        }
+
+        const numberOfSets2 = document.getElementById('numberOfSets2').value;
+        if (numberOfSets2 == "") {
+            alert("Please enter the amount of sets for Exercise 2.")
+            return false;
+        }
+
+        const numberOfReps2 = document.getElementById('numberOfReps2').value;
+        if (numberOfReps2 == "") {
+            alert("Please enter the amount of reps for Exercise 2.")
+            return false;
+        }
+
+        const numberOfWeights2 = document.getElementById('numberOfWeights2').value;
+        if (numberOfWeights2 == "") {
+            alert("Please enter the prescribed load for Exercise 2.")
+            return false;
+        }
 
         const exerciseList3 = document.getElementById('exercisesList3');
         const exerciseId3 = document.getElementById('exercisesList3').value;
         const exerciseName3 = exerciseList3.options[exerciseList3.selectedIndex].innerHTML;
+        if (exerciseName3 == "-- Select Exercises --") {
+            alert("Please select an exercise for exercise 3.")
+            return false;
+        }
+
+        const numberOfSets3 = document.getElementById('numberOfSets3').value;
+        if (numberOfSets3 == "") {
+            alert("Please enter the amount of sets for Exercise 3.")
+            return false;
+        }
+
+        const numberOfReps3 = document.getElementById('numberOfReps3').value;
+        if (numberOfReps3 == "") {
+            alert("Please enter the amount of reps for Exercise 3.")
+            return false;
+        }
+
+        const numberOfWeights3 = document.getElementById('numberOfWeights3').value;
+        if (numberOfWeights3 == "") {
+            alert("Please enter the prescribed load for Exercise 3.")
+            return false;
+        }
 
         const exerciseList4 = document.getElementById('exercisesList4');
         const exerciseId4 = document.getElementById('exercisesList4').value;
         const exerciseName4 = exerciseList4.options[exerciseList4.selectedIndex].innerHTML;
+        if (exerciseName4 == "-- Select Exercises --") {
+            alert("Please select an exercise for exercise 4.")
+            return false;
+        }
 
-        const numberOfSets = document.getElementById('numberOfSets').value;
-        const numberOfSets2 = document.getElementById('numberOfSets2').value;
-        const numberOfSets3 = document.getElementById('numberOfSets3').value;
         const numberOfSets4 = document.getElementById('numberOfSets4').value;
+        if (numberOfSets4 == "") {
+            alert("Please enter the amount of sets for Exercise 4.")
+            return false;
+        }
 
-        const numberOfReps = document.getElementById('numberOfReps').value;
-        const numberOfReps2 = document.getElementById('numberOfReps2').value;
-        const numberOfReps3 = document.getElementById('numberOfReps3').value;
         const numberOfReps4 = document.getElementById('numberOfReps4').value;
+        if (numberOfReps4 == "") {
+            alert("Please enter the amount of reps for Exercise 4.")
+            return false;
+        }
 
-        const numberOfWeights = document.getElementById('numberOfWeights').value;
-        const numberOfWeights2 = document.getElementById('numberOfWeights2').value;
-        const numberOfWeights3 = document.getElementById('numberOfWeights3').value;
         const numberOfWeights4 = document.getElementById('numberOfWeights4').value;
+        if (numberOfWeights4 == "") {
+            alert("Please enter the prescribed load for Exercise 4.")
+            return false;
+        }
 
         const notesBox = document.getElementById('notesBox').value;
+        if (notesBox == "") {
+            alert("Please enter some notes for the Workout.")
+            return false;
+        }
 
         var eList = [exerciseName, exerciseName2, exerciseName3, exerciseName4];
         var setList = [numberOfSets, numberOfSets2, numberOfSets3, numberOfSets4];
@@ -146,14 +227,14 @@ class CreateWorkoutPlan extends BindingClass {
 
         let payload = {workoutDayName: workoutDayName}
 
-        //payload.exerciseId = exerciseId;
+
         payload.exercisesAdded = eList;
         payload.numberOfSets = setList;
         payload.numberOfReps = repList;
         payload.numberOfWeights = weightList;
         payload.notesBox = notesBox;
 
-        // UNABLE TO DESERIALIZE THINK I HAVE TO MAKE ARRAYLISTS FOR THEM?
+
 
 
         document.getElementById('save-workoutplan').disabled = true;

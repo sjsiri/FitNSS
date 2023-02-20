@@ -11,7 +11,7 @@ class UpdateWorkoutPlan extends BindingClass {
 
     constructor() {
         super();
-        this.bindClassMethods(['clientLoaded', 'mount', 'displayWorkoutPlanDetails', 'update',  'loadExerciseDropDown', 'loadExerciseDropDown2', 'loadExerciseDropDown3', 'loadExerciseDropDown4', 'redirectToViewWorkoutPlans', ], this);
+        this.bindClassMethods(['clientLoaded', 'mount', 'displayWorkoutPlanDetails', 'update',  'loadExerciseDropDown', 'redirectToViewWorkoutPlans', ], this);
         this.dataStore = new DataStore();
         this.header = new Header(this.dataStore);
     }
@@ -22,13 +22,11 @@ class UpdateWorkoutPlan extends BindingClass {
     async clientLoaded() {
         const urlParams = new URLSearchParams(window.location.search);
         const workoutPlanId = urlParams.get('id');
+        const exercises = await this.client.getAllExercises();
+        this.dataStore.set('exercises', exercises);
         this.dataStore.set('workoutPlanId', workoutPlanId);
         const workoutPlanDetail = await this.client.getWorkoutPlan(workoutPlanId);
         this.dataStore.set('workoutPlanDetail', workoutPlanDetail);
-        this.loadExerciseDropDown();
-        this.loadExerciseDropDown2();
-        this.loadExerciseDropDown3();
-        this.loadExerciseDropDown4();
         this.displayWorkoutPlanDetails();
     }
 
@@ -42,71 +40,29 @@ class UpdateWorkoutPlan extends BindingClass {
         await this.clientLoaded();
     }
 
+
+
 /**
      * Add LoadExerciseDropDown is order to select exercises
      */
 
-     async loadExerciseDropDown() {
+     async loadExerciseDropDown(exercisesListID, selectedExercise) {
         // Get All Exercises API
-        const exercises = await this.client.getAllExercises();
-        const exerciseDropDown = document.getElementById('exercisesList');
+        const exercises = this.dataStore.get('exercises');
+        const exerciseDropDown = document.getElementById(exercisesListID);
 
         for (let key of exercises) {
                 let option = document.createElement("option");
                 option.setAttribute('value', key.exerciseId);
                 option.setAttribute('innerHTML', key.exerciseName);
+                if (key.exerciseName == selectedExercise) {
+                    option.selected = true;
+                }
                 let optionText = document.createTextNode(key.exerciseName);
                 option.appendChild(optionText);
                 exerciseDropDown.appendChild(option);
         }
      }
-
-
-     async loadExerciseDropDown2() {
-             // Get All Exercises API
-             const exercises = await this.client.getAllExercises();
-             const exerciseDropDown = document.getElementById('exercisesList2');
-
-             for (let key of exercises) {
-                     let option = document.createElement("option");
-                     option.setAttribute('value', key.exerciseId);
-                     option.setAttribute('innerHTML', key.exerciseName);
-                     let optionText = document.createTextNode(key.exerciseName);
-                     option.appendChild(optionText);
-                     exerciseDropDown.appendChild(option);
-             }
-          }
-
-     async loadExerciseDropDown3() {
-             // Get All Exercises API
-             const exercises = await this.client.getAllExercises();
-             const exerciseDropDown = document.getElementById('exercisesList3');
-
-             for (let key of exercises) {
-                     let option = document.createElement("option");
-                     option.setAttribute('value', key.exerciseId);
-                     option.setAttribute('innerHTML', key.exerciseName);
-                     let optionText = document.createTextNode(key.exerciseName);
-                     option.appendChild(optionText);
-                     exerciseDropDown.appendChild(option);
-             }
-          }
-
-     async loadExerciseDropDown4() {
-             // Get All Exercises API
-             const exercises = await this.client.getAllExercises();
-             const exerciseDropDown = document.getElementById('exercisesList4');
-
-             for (let key of exercises) {
-                     let option = document.createElement("option");
-                     option.setAttribute('value', key.exerciseId);
-                     option.setAttribute('innerHTML', key.exerciseName);
-                     let optionText = document.createTextNode(key.exerciseName);
-                     option.appendChild(optionText);
-                     exerciseDropDown.appendChild(option);
-             }
-          }
-
 
     /**
      * Display workout plan details  on the page.
@@ -119,6 +75,12 @@ class UpdateWorkoutPlan extends BindingClass {
         }
         if (workoutPlanDetail.workoutDayName){
             document.getElementById('workoutDayName').value = workoutPlanDetail.workoutDayName;
+        }
+        if (workoutPlanDetail.exercisesAdded){
+            this.loadExerciseDropDown('exercisesList', workoutPlanDetail.exercisesAdded[0]);
+            this.loadExerciseDropDown('exercisesList2', workoutPlanDetail.exercisesAdded[1]);
+            this.loadExerciseDropDown('exercisesList3', workoutPlanDetail.exercisesAdded[2]);
+            this.loadExerciseDropDown('exercisesList4', workoutPlanDetail.exercisesAdded[3]);
         }
         if (workoutPlanDetail.numberOfSets){
             document.getElementById('numberOfSets').value = workoutPlanDetail.numberOfSets[0];
