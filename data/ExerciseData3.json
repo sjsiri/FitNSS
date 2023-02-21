@@ -6,7 +6,8 @@
           "exerciseId": {"S":"abc007"},
           "exerciseMovementGroup":{"S":"Lower"},
           "exerciseName": {"S": "Lunges"},
-          "workingMuscle": {"S": "Quadriceps"}
+          "workingMuscle": {"S": "Quadriceps"},
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -24,7 +25,8 @@
           },
           "workingMuscle": {
             "S": "Shoulders"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -42,7 +44,8 @@
           },
           "workingMuscle": {
             "S": "Obliques"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -60,7 +63,8 @@
           },
           "workingMuscle": {
             "S": "Quadriceps"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     }

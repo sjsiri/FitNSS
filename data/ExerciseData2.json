@@ -6,7 +6,8 @@
           "exerciseId": {"S":"abc004"},
           "exerciseMovementGroup":{"S":"Upper"},
           "exerciseName": {"S": "Bench Press"},
-          "workingMuscle": {"S": "Chest"}
+          "workingMuscle": {"S": "Chest"},
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -24,7 +25,8 @@
           },
           "workingMuscle": {
             "S": "Back"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -42,7 +44,8 @@
           },
           "workingMuscle": {
             "S": "Abdominals"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     }
