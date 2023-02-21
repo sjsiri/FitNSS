@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Edit Workout</title>
   <script type="text/javascript" src="assets/updateWorkoutPlan.js"></script>
-  <link rel="stylesheet" type="text/css" href="css/allWorkoutPlans.css">
+  <link rel="stylesheet" type="text/css" href="css/mainStyle.css">
 </head>
 <header class="header" id="header"></header>
 <body>
@@ -16,6 +16,7 @@
       <input type="text" required id="workoutDayName">
     </p>
     <p class="form-field">
+      <hr style="height:4px;border-width:1px;color:gray;background-color:gray">
       <label><b>Exercise One</b></label>
       <select id="exercisesList">
         <option>-- Select Exercises --</option>
@@ -34,6 +35,7 @@
       <input type="numberOfWeights" id="numberOfWeights">
     </p>
     <p class="form-field">
+      <hr style="height:4px;border-width:1px;color:gray;background-color:gray">
       <label><b>Exercise Two</b></label>
       <select id="exercisesList2">
         <option>-- Select Exercises --</option>
@@ -52,6 +54,7 @@
       <input type="numberOfWeights" id="numberOfWeights2">
     </p>
     <p class="form-field">
+      <hr style="height:4px;border-width:1px;color:gray;background-color:gray">
       <label><b>Exercise Three</b></label>
       <select id="exercisesList3">
         <option>-- Select Exercises --</option>
@@ -70,6 +73,7 @@
       <input type="numberOfWeights" id="numberOfWeights3">
     </p>
     <p class="form-field">
+      <hr style="height:4px;border-width:1px;color:gray;background-color:gray">
       <label><b>Exercise Four</b></label>
       <select id="exercisesList4">
         <option>-- Select Exercises --</option>
@@ -87,12 +91,14 @@
       <label>Prescribed Load</label>
       <input type="numberOfWeights" id="numberOfWeights4">
     </p>
+    <hr style="height:4px;border-width:1px;color:gray;background-color:gray">
     <p class="form-field">
       <label>Notes</label>
       <input type="notesBox" id="notesBox">
     </p>
   </form>
-  <button type="button" id="save-workoutplan">Save Workout Plan</button>
+  <button type="button" class="button" id="save-workoutplan">Save Workout Plan</button>
+  <button type="button" class="button" onclick="location.href='viewSingleWorkoutPlan.html';">Cancel</button>
 </div>
 </body>
 </html>

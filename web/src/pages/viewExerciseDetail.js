@@ -70,6 +70,7 @@ class ViewExerciseDetail extends BindingClass {
         }
 
     async deleteExerciseFromTable() {
+            if(confirm("Are you sure you want to delete this exercise?") == true) {
             const urlParams = new URLSearchParams(window.location.search);
             const exerciseId = urlParams.get('id');
 
@@ -81,6 +82,7 @@ class ViewExerciseDetail extends BindingClass {
             if (exercise) {
                 window.location.href = `/viewAllExercises.html`;
             }
+       }
     }
 }
 

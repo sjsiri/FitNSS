@@ -6,7 +6,8 @@
           "exerciseId": {"S":"abc001"},
           "exerciseMovementGroup":{"S":"Lower"},
           "exerciseName": {"S": "Romanian Deadlifts"},
-          "workingMuscle": {"S": "Hamstring"}
+          "workingMuscle": {"S": "Hamstring"},
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -24,7 +25,8 @@
           },
           "workingMuscle": {
             "S": "Quadriceps"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     },
@@ -42,7 +44,8 @@
           },
           "workingMuscle": {
             "S": "Hamstring"
-          }
+          },
+          "userId": {"S": "DEFAULT"}
         }
       }
     }
