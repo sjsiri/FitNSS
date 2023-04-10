@@ -60,16 +60,23 @@
 ## About The Project
 The FitNSS application is for people who want a way to keep a log of their workouts. It allows the user to create multiple workout plans or view other users workout plans in the database. The workout plans uses data created by users that keeps track of all the exercises that were created in it.
 
-<img src="https://github.com/lafleurss/employee-management-app/raw/main/resources/images/employee-management-client.png">
+<img src="https://i.imgur.com/qc2DPO1.png">
+<img src="https://i.imgur.com/yr7jR1u.png">
+<img src="https://i.imgur.com/kCjYOAd.png">
+<img src="https://i.imgur.com/5DK1IfQ.png">
 
 ### Features
-* Users can view “All Employees” list across ALL departments
-* Users can filter the “All Employees” list view based on a selected department
-* Users can view, create, update requested employee information
-* Users can view “All Employees” list sorted by the employee’s last name
-* Users can view, create and update departments information
+U1. Be able to view all exercises in the database.
 
+U2. Be able to create workout plans by adding the exercises into it.
 
+U3. Create a new exercise and add that to the database.
+
+U4. Update the number of Sets,Reps, and weight.
+
+U5. Be able to delete an exercise from the database.
+
+U6. Be able to view the log of the workout plan that was created with the number of exercises, sets, reps, and weights added in.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -132,8 +139,6 @@ To stop either the local backend (the `sam local...` command) or local frontend 
 
 Surinh Jack Siri - [Email](surinhjs@gmail.com) - [LinkedIn](https://www.linkedin.com/in/surinhsiri/)
 
-Project Link: [https://github.com/sjsiri/Employee-Management-Client](https://github.com/sjsiri/Employee-Management-Client)
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -142,8 +147,6 @@ Project Link: [https://github.com/sjsiri/Employee-Management-Client](https://git
 
 * []() Nashville Software School for supporting me in my journey of lifelong learning
 * []() Instructors Andy Collins and Charlie Penner for their endless patience, wisdom and guidance
-* []() Teammates - Shilpa Nair, Josh Taylor, Sanjay T., Jesse Bass without whom this project would not be possible
-* []() Shilpa Nair for this great readme
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
