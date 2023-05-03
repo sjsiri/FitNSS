@@ -1,0 +1,27 @@
+name: FitNss Pipeline
+
+on:
+    push:
+        branches:
+          - 'main'
+          - 'feature**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./FitNSS/src/test/
+
+      strategy:
+        matrix:
+          java-version: [8]
+
+    env:
+      MODE: "dev"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Test FitNss Code
+        run: 
